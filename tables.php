@@ -8,9 +8,9 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="#">Add Patient</a>
         </li>
-        <li class="breadcrumb-item active">User Profile</li>
+        <li class="breadcrumb-item active">Patient Information</li>
       </ol>
       <!-- Example DataTables Card-->
       <?php include("pages/table.php"); ?>

@@ -8,9 +8,9 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="#">Manage Patients</a>
         </li>
-        <li class="breadcrumb-item active">Data Records</li>
+        <li class="breadcrumb-item active">Patient Records</li>
       </ol>
       <!-- Area Chart Example-->
       <?php include("pages/charts.php"); ?>

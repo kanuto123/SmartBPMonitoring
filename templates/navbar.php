@@ -14,14 +14,14 @@
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="charts.php">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Data Records</span>
+            <i class="fa fa-fw fa-group"></i>
+            <span class="nav-link-text">Manage Patients</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="tables.php">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">User Profile</span>
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">Add Patient</span>
           </a>
         </li>
 
