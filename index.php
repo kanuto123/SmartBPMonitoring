@@ -1,5 +1,5 @@
 <?php include("templates/header.php"); ?>
-
+<?php require("templates/database.php") ?>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
  <?php include("templates/navbar.php"); ?>
   <div class="content-wrapper">
