@@ -1,31 +1,31 @@
-<?php include("templates/header.php"); ?>
+<?php include("../templates/header.php"); ?>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-<?php include("templates/navbar.php"); ?>
+ <?php include("../templates/navbar.php"); ?>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Manage Patients</a>
+          <a href="<?php echo getBaseUrl() ?>/manage-patients/">Manage Patients</a>
         </li>
-        <li class="breadcrumb-item active">Patient Records</li>  
+        <li class="breadcrumb-item active">Add New Patient</li>
       </ol>
-      <!-- Area Chart Example-->
-      <?php include("pages/charts.php"); ?>
+      <!-- Example DataTables Card-->
+      <?php include("../pages/patient-form.php"); ?>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
-   <?php include("templates/footer.php"); ?>
+    <?php include("../templates/footer.php"); ?>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <?php include("templates/logout-modal.php"); ?>
+    <?php include("../templates/logout-modal.php"); ?>
     <!-- Bootstrap core JavaScript-->
-    <?php include("templates/javascript.php"); ?>
+    <?php include("../templates/javascript.php"); ?>
   </div>
 </body>
 

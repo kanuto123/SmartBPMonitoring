@@ -82,11 +82,6 @@
           </div>
         </div>
       </div>
-      <!-- Area Chart Example-->
-     <?php include("pages/charts.php"); ?>
-        
-      <!-- Example DataTables Card-->
-        <?php include("pages/table.php"); ?>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->

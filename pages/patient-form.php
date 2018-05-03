@@ -3,7 +3,7 @@
     <i class="fa fa-user"></i> Add Patient</div>
   <div class="card-body">
     <div class="table-responsivesz">
-      <table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">              
+      <table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">
           <form>
           <div class="form-group">
             <div class="form-row">
@@ -41,15 +41,15 @@
                   <input type="radio" name="gender" value="female"> Female
               </div></strong>
             </div>
-          </div>        
+          </div>
           <div class="form-group">
           </div>
           <a href="tables.php" class="btn btn-primary">Add Patient</a>
         </form>
-         
+
       </table>
     </div>
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
-
+<!-- SCRIPTS -->
