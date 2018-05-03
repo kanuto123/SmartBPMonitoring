@@ -10,7 +10,7 @@
         <li class="breadcrumb-item">
           <a href="#">Manage Patients</a>
         </li>
-        <li class="breadcrumb-item active">Patient Records</li>
+        <li class="breadcrumb-item active">Patient Records</li>  
       </ol>
       <!-- Area Chart Example-->
       <?php include("pages/charts.php"); ?>

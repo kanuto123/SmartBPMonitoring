@@ -22,7 +22,7 @@
               <div class="mr-5">Number of Tests</div>
               <div class="mr-5">Daily</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="tables.php">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
