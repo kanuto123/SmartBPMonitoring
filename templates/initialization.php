@@ -1,5 +1,9 @@
 <?php
 $projectName = "sbmp";
+$dbHost = "localhost";
+$dbName = "";
+$dbUsername = "root";
+$dbPassword = "";
 function getBaseUrl() {
     // output: /myproject/index.php
     $currentPath = $_SERVER['PHP_SELF'];
