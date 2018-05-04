@@ -12,7 +12,7 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Manage Patients">
           <a class="nav-link" href="<?php echo getBaseUrl() ?>/manage-patients/">
             <i class="fa fa-fw fa-group"></i>
             <span class="nav-link-text">Manage Patients</span>
@@ -47,19 +47,19 @@
             <h6 class="dropdown-header">New Messages:</h6>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
-              <strong></strong>
+              <strong>test</strong>
               <span class="small float-right text-muted"></span>
               <div class="dropdown-message small"></div>
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
-              <strong></strong>
+              <strong>test 1</strong>
               <span class="small float-right text-muted"></span>
               <div class="dropdown-message small"></div>
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
-              <strong></strong>
+              <strong>test 2</strong>
               <span class="small float-right text-muted"></span>
               <div class="dropdown-message small"></div>
             </a>

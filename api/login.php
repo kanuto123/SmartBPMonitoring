@@ -18,12 +18,21 @@ if (!$post['email'] || !$post['password']) {
 $email = $post['email'];
 $password = $post['password'];
 // Perform queries
-$user = mysqli_query($con,"SELECT * FROM users WHERE email='$email' && password='$password'");
+$query = "SELECT * FROM users WHERE email='$email'";
+
+$res = mysqli_query($con,$query);
+$user = mysqli_fetch_assoc($res);
 if ($user) {
-  $_SESSION['user'] = $user;
-  $_SESSION['errors'] = null;
-  header("Location: ". getBaseUrl() . "/");
-  die();
+  if ($user['password'] === md5($password)) {
+    $_SESSION['user'] = $user;
+    $_SESSION['errors'] = null;
+    header("Location: ". getBaseUrl() . "/");
+    die();
+  } else {
+    $_SESSION['errors'] = "Password Incorrect!";
+    header("Location: ". getBaseUrl() . "/login.php");
+    die();
+  }
 } else {
   $_SESSION['errors'] = "No User found!";
   header("Location: ". getBaseUrl() . "/login.php");

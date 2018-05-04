@@ -1,7 +1,7 @@
 <?php
 $projectName = "sbmp";
 $dbHost = "localhost";
-$dbName = "";
+$dbName = "smbp";
 $dbUsername = "root";
 $dbPassword = "";
 function getBaseUrl() {
