@@ -1,54 +1,58 @@
+<?php if (isset($_SESSION['msg'])): ?>
+<div class="msg">
+  <?php 
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
+  ?>
+</div>
+<?php endif ?>
 <div class="card mb-3">
   <div class="card-header">
-    <i class="fa fa-user"></i> Add Patient</div>
+    <i class="fa fa-user"></i> Add Patient
+  </div>
   <div class="card-body">
-    <div class="table-responsivesz">
-      <table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">
-          <form>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6"><strong>
-                <label for="exampleInputName">First name</label>
-                <input class="form-control" id="exampleInputFirstName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
-              </div></strong>
-              <div class="col-md-6"><strong>
-                <label for="exampleInputName">Last name</label>
-                <input class="form-control" id="LastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
-              </div></strong>
-              <div class="col-md-6"><strong>
-                <label for="exampleInputName">Middle Initial</label>
-                <input class="form-control" id="MiddleInitial" type="text" aria-describedby="nameHelp" placeholder="Enter middle inital">
-              </div></strong>
-              <div class="col-md-6"><strong>
-                <label for="exampleInputName">Address</label>
-                <input class="form-control" id="Address" type="text" aria-describedby="nameHelp" placeholder="Enter address">
-              </div></strong>
-              <div class="col-md-6"><strong>
-                <label for="exampleInputName">Contact Number</label>
-                <input class="form-control" id="ContactNumber" type="text" aria-describedby="nameHelp" placeholder="Enter contact number">
-              </div></strong>
-              <div class="col-md-6"><strong>
-                <label for="exampleInputLastName">Birth Date</label>
-                <input class="form-control" id="BirthDate" type="date" aria-describedby="nameHelp" placeholder="Enter birth date ">
-              </div></strong>
-              <div class="col-md-6"><strong>
-                <label for="exampleInputEmail1">Email address</label>
-                <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
-              </div></strong>
-              <div class="col-md-6"><strong>
-                  <label for="exampleInputEmail1">Gender</label><br>
-                  <input type="radio" name="gender" value="male"> Male
-                  <input type="radio" name="gender" value="female"> Female
-              </div></strong>
+    <div class="table-responsives">
+      <form method="POST" action="<?php echo getBaseUrl() ?>/manage-patients/server.php">
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-6">
+              <label for="InputFname"><strong>First name</strong></label>
+              <input class="form-control" name="fname" type="text"  placeholder="Enter first name" required>
+            </div>
+            <div class="col-md-6">
+              <label for="InputLname"><strong>Last name</strong></label>
+              <input class="form-control" name="lname" type="text"  placeholder="Enter last name" required>
+            </div>
+            <div class="col-md-6">
+              <label for="InputMi"><strong>Middle Initial</strong></label>
+              <input class="form-control" name="mi" type="text"  placeholder="Enter middle inital" required>
+            </div>
+            <div class="col-md-6">
+              <label for="InputAddress"><strong>Address</strong></label>
+              <input class="form-control" name="address" type="text"  placeholder="Enter address" required>
+            </div>
+            <div class="col-md-6">
+              <label for="InputContactNo"><strong>Contact Number</strong></label>
+              <input class="form-control" name="contactno" type="text"  placeholder="Enter contact number" required>
+            </div>
+            <div class="col-md-6">
+              <label for="InputBirthday"><strong>Birth Date</strong></label>
+              <input class="form-control" name="bday" type="date"  placeholder="Enter birth date " required>
+            </div>
+            <div class="col-md-6">
+              <label for="InputEmailAddress"><strong>Email address</strong></label>
+              <input class="form-control" name="email" type="email"  placeholder="Enter email" required>
+            </div>
+            <div class="col-md-6">
+                <label for="InputGender"><strong>Gender</strong></label>
+                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> Female
             </div>
           </div>
-          <div class="form-group">
-          </div>
-          <a href="tables.php" class="btn btn-primary">Add Patient</a>
-        </form>
-
-      </table>
-    </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Add Patient</button>
+        </div>
+      </form>
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
