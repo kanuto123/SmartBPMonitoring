@@ -18,6 +18,12 @@
             <span class="nav-link-text">Manage Patients</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Manage Patients">
+          <a class="nav-link" href="<?php echo getBaseUrl() ?>/manage-user/">
+            <i class="fa fa-fw fa-group"></i>
+            <span class="nav-link-text">Manage Users</span>
+          </a>
+        </li>
         <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="tables.php">
             <i class="fa fa-fw fa-user"></i>

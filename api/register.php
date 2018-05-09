@@ -1,7 +1,5 @@
 <?php
-session_start();
 require('../templates/initialization.php');
-
 $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPassword'],$GLOBALS['dbName']);
 // Check connection
 if (mysqli_connect_errno()) {
@@ -9,19 +7,28 @@ if (mysqli_connect_errno()) {
   die();
 }
 
-        $fname = mysqli_real_escape_string($con, $post['fname']);
-        $lname = mysqli_real_escape_string($con, $post['lname']);
-        $email = mysqli_real_escape_string($con, $post['email']);
-        $password = mysqli_real_escape_string($con, $post['password']);
+if (isset($_POST)){
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
 
-$post = $_POST;
+
+
+  $query = "INSERT INTO users (fname,lname,email,password) VALUES ('$fname' , '$lname', '$email', '$password')";
+  $test = mysqli_query($con, $query);
+  $_SESSION['msg'] = "Account Registered";
+  header("Location: ". getBaseUrl() . "/manage-patients/add.php");
+  die();  //redirect to index page after inserting
+}
+/*$post = $_POST;
 if (!$post['fname'] || !$post['lname'] !$post['email'] || !$post['password'] ||) {
   $_SESSION['errors'] = "Blank Fields";
   header("Location: ". getBaseUrl() . "/login.php");
   die();
-}
+}*/
 // Perform queries
-$query = "INSERT INTO users (firstname, lastname, email, password) 
+/*$query = "INSERT INTO users (firstname, lastname, email, password) 
           VALUES ('$fname', '$lname', '$email', 'password')";
 $res = mysqli_query($con,$query);
 $user = mysqli_fetch_assoc($res);
@@ -42,7 +49,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       mysqli_query($con, $sql);
     header("Location: ". getBaseUrl() . "/login.php");
     exit(); 
-  }
+  }*/
  //   if ($user) {
  //     if ($user['password'] == $password) {
  //       $_SESSION['user'] = $user;

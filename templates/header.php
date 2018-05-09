@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php session_start() ?>
 <html lang="en">
-<?php require('initialization.php') ?>
+<?php require('initialization.php'); ?>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

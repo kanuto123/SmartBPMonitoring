@@ -2,11 +2,11 @@
   <div class="card-header">
     <div class="row">
       <div class="col-sm-6">
-        <i class="fa fa-group"></i> Manage Patient Records</i>
+        <i class="fa fa-group"></i> Manage User Records</i>
       </div>
       <div class="col-sm-6">
-        <a href="<?php echo getBaseUrl() ?>/manage-patients/add.php" class="btn btn-outline-success btn-sm pull-right">
-          <i class="fa fa-plus"></i> ADD NEW PATIENT
+        <a href="<?php echo getBaseUrl() ?>/manage-user/add.php" class="btn btn-outline-success btn-sm pull-right">
+          <i class="fa fa-plus"></i> ADD NEW USER
         </a>
       </div>
     </div>
@@ -31,23 +31,40 @@
             <th><center>Email Address</center></th>
             <th><center>Gender</th>
             <div class="col">
-            <th colspan="2"><center>Action</center></th>
+            <th><center>Action</center></th>
             </div>
           </tr>
         </thead>
         <tbody>
-          <?php $users = getUsers() ?>
-          <?php while ($row = mysqli_fetch_array($users)) { ?>
+          <?php $results = getUserWithPatient() ?>
+          <?php while ($row = mysqli_fetch_assoc($results)) { ?>
           <tr>
-            <td><?php echo $row['fname']; ?> <?php echo $row['mi']; ?> <?php echo $row['lname']; ?></td>
+            <td><?php echo $row['fullname']; ?></td>
             <td><?php echo $row['address']; ?></td>
             <td><?php echo $row['contactNo']; ?></td>
             <td><?php echo $row['birthday']; ?></td>
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['gender']; ?></td>
             <td>
-            <button type="submit" class="btn btn-primary btn-sm"><a class="del_btn" href="../manage-patients/server.php?edit=<?php echo $row['id']; ?>">Edit</a></button>
-            <button class="btn btn-primary btn-sm"><a class="del_btn" href="../manage-patients/server.php?del=<?php echo $row['id']; ?>">Delete</a></button>
+            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+            <button class="btn btn-primary btn-sm"><a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>">Delete</a></button>
+            <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
+            </td>
+          </tr>
+          <?php } ?>
+          <?php $results = getUserStaffs() ?>
+          <?php while ($row = mysqli_fetch_assoc($results)) { ?>
+          <tr>
+            <td><?php echo $row['fullname']; ?></td>
+            <td><?php echo isset($row['address']) ? $row['address'] : "n/a"; ?></td>
+            <td><?php echo isset($row['contactNo']) ? $row['contactNo'] : "n/a"; ?></td>
+            <td><?php echo isset($row['birthday']) ? $row['birthday'] : "n/a"; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td><?php echo isset($row['gender']) ? $row['gender'] : "n/a"; ?></td>
+            <td>
+            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+            <button class="btn btn-primary btn-sm"><a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>">Delete</a></button>
+            <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
             </td>
           </tr>
           <?php } ?>    

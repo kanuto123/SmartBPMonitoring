@@ -13,7 +13,7 @@
         <li class="breadcrumb-item active">Add New Patient</li>
       </ol>
       <!-- Example DataTables Card-->
-      <?php include("../pages/patient-form.php"); ?>
+      <?php include("../pages/patient-form-update.php"); ?>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->

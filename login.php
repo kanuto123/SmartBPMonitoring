@@ -5,10 +5,11 @@
     die();
   }
 ?>
-<body class="bg-dark">
+<body class="bg-secondary">
+ <!-- <div class="card-header"><center><b>Smart BP Monitoring</b></center></div> -->
   <div class="container">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login</div>
+      <div class="card-header"><center><b>Smart BP Monitoring</b></center></div>
       <div class="card-body">
         <?php if (isset($_SESSION['errors'])) { ?>
           <div class="alert alert-danger" role="alert">
@@ -18,11 +19,11 @@
         <form method="POST" action="<?php echo getBaseUrl() ?>/api/login.php">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <input class="form-control" id="InputEmail" type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" name="password" placeholder="Password">
+            <input class="form-control" id="InputPassword" type="password" name="password" placeholder="Password">
           </div>
           <div class="form-group">
             <div class="form-check">

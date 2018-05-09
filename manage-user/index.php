@@ -2,18 +2,18 @@
 <?php require("../templates/database.php"); ?>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
- <?php include("../templates/navbar.php"); ?>
+<?php include("../templates/navbar.php"); ?>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?php echo getBaseUrl() ?>/manage-patients/">Manage Patients</a>
+          <a href="#">Manage User</a>
         </li>
-        <li class="breadcrumb-item active">Add New Patient</li>
+        <li class="breadcrumb-item active">User Records</li>
       </ol>
-      <!-- Example DataTables Card-->
-      <?php include("../pages/patient-form.php"); ?>
+      <!-- Area Chart Example-->
+      <?php include("../pages/user-table.php"); ?>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -30,3 +30,4 @@
 </body>
 
 </html>
+ 

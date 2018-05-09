@@ -8,12 +8,12 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?php echo getBaseUrl() ?>/manage-patients/">Manage Patients</a>
+          <a href="<?php echo getBaseUrl() ?>/manage-user/">Manage User</a>
         </li>
-        <li class="breadcrumb-item active">Add New Patient</li>
+        <li class="breadcrumb-item active">Add User</li>
       </ol>
       <!-- Example DataTables Card-->
-      <?php include("../pages/patient-form.php"); ?>
+      <?php include("../pages/user-form.php"); ?>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
