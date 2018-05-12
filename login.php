@@ -1,4 +1,4 @@
-<?php include("templates/header.php"); ?>
+s<?php include("templates/header.php"); ?>
 <?php
   if (isset($_SESSION['user'])) {
     header("Location: ". getBaseUrl() . "/");

@@ -11,7 +11,7 @@ if (isset($_GET['del'])){
 		$id = $_GET['del'];
         $query = "DELETE FROM users WHERE id='$id'";
 		mysqli_query($con, $query);
-		$_SESSION['msg'] = "USER DELETED";
+		$_SESSION['msg3'] = "USER DELETED";
 		header("Location: ". getBaseUrl() . "/manage-user/index.php");
 		die();
 	}
@@ -46,10 +46,10 @@ if (isset($_POST)){
 		$_SESSION['errors']['address'] = 'Address is required.'; 
 	}
 	if (!isset($contactNo) || $contactNo === "") {
-		$_SESSION['errors']['contactno'] = 'Contact Number is required.'; 
+		$_SESSION['errors']['contactNo'] = 'Contact Number is required.'; 
 	}
 	if (!isset($birthday) || $birthday === "") {
-		$_SESSION['errors']['bday'] = 'Birth Date is required.'; 
+		$_SESSION['errors']['birthday'] = 'Birth Date is required.'; 
 	}
 	if (!isset($email) || $email === "") {
 		$_SESSION['errors']['email'] = 'Email address is required.'; 
@@ -70,9 +70,9 @@ if (isset($_POST)){
 		header("Location: ". getBaseUrl() . "/manage-patients/add.php");
 		die();
 	}
-	$query = "INSERT INTO users (fname,lname,address,birthday,mi,email,gender,contactNo) VALUES ('$fname' , '$lname', '$address', '$bday', '$mi', '$email', '$gender', '$contactno')";
+	$query = "INSERT INTO users (fname,lname,address,birthday,mi,email,gender,contactNo) VALUES ('$fname' , '$lname', '$address', '$birthday', '$mi', '$email', '$gender', '$contactNo')";
 	$test = mysqli_query($con, $query);
-	$_SESSION['msg'] = "PATIENT SAVED";
+	$_SESSION['msg4'] = "USER SAVED";
 	header("Location: ". getBaseUrl() . "/manage-user/add.php");
 	die(); 	//redirect to index page after inserting
 	}

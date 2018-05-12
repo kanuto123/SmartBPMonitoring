@@ -23,7 +23,7 @@ $query = "SELECT * FROM users WHERE email='$email'";
 $res = mysqli_query($con,$query);
 $user = mysqli_fetch_assoc($res);
 if ($user) { 
-  if ($user['password'] == $password) {
+  if ($user['password'] == md5($password)) {
     $_SESSION['user'] = $user;
     $_SESSION['errors'] = null;
     header("Location: ". getBaseUrl() . "/");

@@ -13,14 +13,12 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <?php if (isset($_SESSION['msg'])): ?>
-        <div class="msg">
-          <?php 
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-          ?>
-        </div>
-      <?php endif ?>
+       <!--  <?php if (isset($_SESSION['msg3'])) { ?>
+            <div class="alert alert-success" role="alert">
+            <center><?php echo $_SESSION['msg3'] ?></center>
+            </div>
+        <?php } ?> -->
+        <div class="alert alert-success dynamic-alert" role="alert" style="display: none;"><center class="error-messages"></center></div>
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
@@ -47,7 +45,7 @@
             <td><?php echo $row['gender']; ?></td>
             <td>
             <button type="submit" class="btn btn-primary btn-sm">Edit</button>
-            <button class="btn btn-primary btn-sm"><a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>">Delete</a></button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="deleteUser(<?php echo $row['id'] ?>)">Delete</button>
             <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
             </td>
           </tr>
@@ -63,7 +61,7 @@
             <td><?php echo isset($row['gender']) ? $row['gender'] : "n/a"; ?></td>
             <td>
             <button type="submit" class="btn btn-primary btn-sm">Edit</button>
-            <button class="btn btn-primary btn-sm"><a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>">Delete</a></button>
+             <button type="button" class="btn btn-primary btn-sm" onclick="deleteUser(<?php echo $row['id'] ?>)">Delete</button>
             <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
             </td>
           </tr>
@@ -88,3 +86,13 @@
 <script src="<?php echo getBaseUrl() ?>/vendor/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for this page-->
 <script src="<?php echo getBaseUrl() ?>/assets/js/sb-admin-datatables.min.js"></script>
+<script type="text/javascript">
+  function deleteUser(idx) {
+    let url = "<?php echo getBaseUrl() ?>/api/getUserInfoDelete.php";
+    // $(".modal-message").html('<span class="fa fa-spinner fa-spin"></span> Loading patient info...');
+    $.post(url, {id: idx}, function (result) {
+      $("#deleteModaluser").html(result);
+      $("#deleteModaluser").modal('show');
+    });
+  }
+</script>

@@ -22,6 +22,8 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+     <div class="modal fade" id="deleteModaluser" tabindex="-1" role="dialog" aria-labelledby="
+     deleteModalLabeluser" aria-hidden="true"></div>
     <!-- Logout Modal-->
     <?php include("../templates/logout-modal.php"); ?>
     <!-- Bootstrap core JavaScript-->

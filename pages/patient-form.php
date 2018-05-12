@@ -3,69 +3,113 @@
     <i class="fa fa-user"></i> Add Patient
   </div>
   <div class="card-body">
-    <?php if (isset($_SESSION['msg'])): ?>
-      <div class="msg">
-        <?php 
-          echo $_SESSION['msg'];
-          unset($_SESSION['msg']);
-        ?>
-      </div>
-    <?php endif ?>
-    <br>
+    <div class="alert alert-success dynamic-alert" role="alert" style="display: none;"><center class="error-messages"></center></div>
     <div class="table-responsives">
-    <form method="POST" action="<?php echo getBaseUrl() ?>/manage-patients/server.php">
+    <form>
       <div class="form-group">
         <div class="form-row">
           <div class="col-md-6">
             <label for="InputFname"><strong>First name</strong></label>
-            <input class="form-control" name="fname" type="text"  placeholder="Enter first name">
-            <span style="color: red;"><?php echo (isset($_SESSION['errors']['fname']) ? $_SESSION['errors']['fname'] : "") ?></span>
+            <input class="form-control" id="fname" type="text"  placeholder="Enter first name">
+            <span style="color: red;" id="fname_error"></span>
           </div>
           <div class="col-md-6">
             <label for="InputLname"><strong>Last name</strong></label>
-            <input class="form-control" name="lname" type="text"  placeholder="Enter last name">
-            <span style="color: red;"><?php echo (isset($_SESSION['errors']['lname']) ? $_SESSION['errors']['lname'] : "") ?></span>
+            <input class="form-control" id="lname" type="text"  placeholder="Enter last name">
+            <span style="color: red;" id="lname_error"></span>
           </div>
           <div class="col-md-6">
             <label for="InputMi"><strong>Middle Initial</strong></label>
-            <input class="form-control" name="mi" type="text"  placeholder="Enter middle inital">
-            <span style="color: red;"><?php echo (isset($_SESSION['errors']['mi']) ? $_SESSION['errors']['mi'] : "") ?></span>
-                                                    <!-- question ? true=print errors false=empty -->                          
+            <input class="form-control" id="mi" type="text"  placeholder="Enter middle inital">
+            <span style="color: red;" id="mi_error"></span>                      
           </div>                      
           <div class="col-md-6">
             <label for="InputAddress"><strong>Address</strong></label>
-            <input class="form-control" name="address" type="text"  placeholder="Enter address">
-            <span style="color: red;"><?php echo (isset($_SESSION['errors']['address']) ? $_SESSION['errors']['address'] : "") ?></span>
+            <input class="form-control" id="address" type="text"  placeholder="Enter address">
+            <span style="color: red;" id="address_error"></span>
           </div>
           <div class="col-md-6">
             <label for="InputContactNo"><strong>Contact Number</strong></label>
-            <input class="form-control" name="contactno" type="text"  placeholder="Enter contact number">
-            <span style="color: red;"><?php echo (isset($_SESSION['errors']['contactno']) ? $_SESSION['errors']['contactno'] : "") ?></span>
+            <input class="form-control" id="contactNo" type="text" placeholder="Enter contact number">
+            <span style="color: red;" id="contactNo_error"></span>
           </div>
           <div class="col-md-6">
             <label for="InputBirthday"><strong>Birth Date</strong></label>
-            <input class="form-control" name="bday" type="date"  placeholder="Enter birth date">
-            <span style="color: red;"><?php echo (isset($_SESSION['errors']['bday']) ? $_SESSION['errors']['bday'] : "") ?></span>
+            <input class="form-control" id="birthday" type="date"  placeholder="Enter birth date">
+            <span style="color: red;" id="birthday_error"></span>
           </div>
           <div class="col-md-6">
             <label for="InputEmailAddress"><strong>Email address</strong></label>
-            <input class="form-control" name="email" type="email"  placeholder="Enter email">
-            <span style="color: red;"><?php echo (isset($_SESSION['errors']['email']) ? $_SESSION['errors']['email'] : "") ?></span>
+            <input class="form-control" id="email" type="email"  placeholder="Enter email">
+            <span style="color: red;" id="email_error"></span>
           </div>
           <div class="col-md-6">
             <label for="InputGender"><strong>Gender</strong></label>
             <br>
-            <input type="radio" name="gender" value="male"> Male
-            <input type="radio" name="gender" value="female"> Female
+            <input type="radio" id="gender" value="male"> Male
+            <input type="radio" id="gender" value="female"> Female
             <br>
-            <span style="color: red;"><?php echo (isset($_SESSION['errors']['gender']) ? $_SESSION['errors']['gender'] : "") ?></span>
+            <span style="color: red;" id="gender_error"></span>
           </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Add Patient</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="addPatientDB()">Add Patient</button>
       </div>
     </form>
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
 <!-- SCRIPTS -->
+<script type="text/javascript">
+  function addPatientDB () {
+    let url = "<?php echo getBaseUrl() ?>/api/addPatient.php";
+    let params = {
+      fname: $("#fname").val(),
+      lname: $("#lname").val(),
+      mi: $("#mi").val(),
+      address: $("#address").val(),
+      contactNo: $("#contactNo").val(),
+      birthday: $("#birthday").val(),
+      email: $("#email").val(),
+      gender: $("#gender:checked").val()
+    }
+
+    $.post(url, params, function (o) {
+      if(o.is_successful) {
+        $(".dynamic-alert").show();
+        clearFields();
+        $(".dynamic-alert").addClass('alert-success');
+        $(".error-messages").html(o.messages);
+      } else {
+        $(".dynamic-alert").removeClass('alert-success'); 
+        $(".dynamic-alert").removeClass('alert-danger');
+        $(".dynamic-alert").addClass('alert-danger');
+        // $(".error-messages").html(o.errors);
+        // clear messages
+        let fields = ['fname', 'lname', 'mi', 'address', 'contactNo', 'birthday', 'email', 'gender', 'password'];
+        $.each(fields, function( index, value ) {
+          $("#"+value+"_error").html("");
+        });
+        // set messages
+        $.each(o.errors, function( index, value ) {
+          $("#"+index+"_error").html(value);
+        });
+        $(".dynamic-alert").hide();
+      }
+    }, 'json');
+  }
+
+  function clearFields () {
+    $("#fname").val("");
+    $("#lname").val("");
+    $("#mi").val("");
+    $("#address").val("");
+    $("#contactNo").val("");
+    $("#birthday").val("");
+    $("#email").val("");
+    $("#gender").val("");
+    $("#password").val("");
+    $(".dynamic-alert").removeClass('alert-success'); 
+    $(".dynamic-alert").removeClass('alert-danger');
+  }
+</script>

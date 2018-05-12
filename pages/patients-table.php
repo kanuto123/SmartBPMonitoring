@@ -13,14 +13,12 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <?php if (isset($_SESSION['msg'])): ?>
-        <div class="msg">
-          <?php 
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-          ?>
-        </div>
-      <?php endif ?>
+<!--       <?php if (isset($_SESSION['msg1'])) { ?>
+          <div class="alert alert-success"  role="alert">
+            <center><?php echo $_SESSION['msg1'] ?></center>
+          </div>
+      <?php } ?> -->
+      <div class="alert alert-success dynamic-alert" role="alert" style="display: none;"><center class="error-messages"></center></div>
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
@@ -46,8 +44,8 @@
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['gender']; ?></td>
             <td>
-            <button type="submit" class="btn btn-primary btn-sm"><a class="del_btn" href="../manage-patients/server.php?edit=<?php echo $row['id']; ?>">Edit</a></button>
-            <button class="btn btn-primary btn-sm"><a class="del_btn" href="../manage-patients/server.php?del=<?php echo $row['id']; ?>">Delete</a></button>
+            <button type="button" class="btn btn-primary btn-sm"><a class="del_btn" href="../manage-patients/server.php?edit=<?php echo $row['id']; ?>">Edit</a></button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="deletePatient(<?php echo $row['id'] ?>)">Delete</button>
             </td>
           </tr>
           <?php } ?>    
@@ -71,3 +69,13 @@
 <script src="<?php echo getBaseUrl() ?>/vendor/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for this page-->
 <script src="<?php echo getBaseUrl() ?>/assets/js/sb-admin-datatables.min.js"></script>
+<script type="text/javascript">
+  function deletePatient(idx) {
+    let url = "<?php echo getBaseUrl() ?>/api/getPatientInfoDelete.php";
+    // $(".modal-message").html('<span class="fa fa-spinner fa-spin"></span> Loading patient info...');
+    $.post(url, {id: idx}, function (result) {
+      $("#deleteModalpatient").html(result);
+      $("#deleteModalpatient").modal('show');
+    });
+  }
+</script>

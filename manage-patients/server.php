@@ -12,17 +12,17 @@ if (mysqli_connect_errno()) {
 		$fname  = mysqli_real_escape_string($_POST['fname']);
 		$lname = mysqli_real_escape_string($_POST['lname']);
 		$address = mysqli_real_escape_string($_POST['address']);
-		$bday = mysqli_real_escape_string($_POST['bday']);
+		$birthday = mysqli_real_escape_string($_POST['birthday']);
 		$mi  = mysqli_real_escape_string($_POST['mi']);
 		$gender  = mysqli_real_escape_string($_POST['gender']);
-		$contactno  = mysqli_real_escape_string($_POST['contactno']);
+		$contactNo  = mysqli_real_escape_string($_POST['contactNo']);
 		$id = mysqli_real_escape_string($_POST['id']);
 	}
 		if (isset($_GET['del'])){
 		$id = $_GET['del'];
 		$query = "DELETE FROM patient WHERE id='$id'";
 		mysqli_query($con, $query);
-		$_SESSION['msg'] = "USER DELETED";
+		$_SESSION['msg1'] = "PATIENT DELETED";
 		header("Location: ". getBaseUrl() . "/manage-patients/index.php");
 		die();
 	}
@@ -64,11 +64,11 @@ if (isset($_POST)){
 	$fname = $_POST['fname'];
 	$lname = $_POST['lname'];
 	$address = $_POST['address'];
-	$bday = $_POST['bday'];
+	$birthday = $_POST['birthday'];
 	$mi = $_POST['mi'];
 	$email = $_POST['email'];
 	$gender = $_POST['gender']; /*? $_POST['gender'] : 'Male';*/
-	$contactno = $_POST['contactno'];
+	$contactNo = $_POST['contactNo'];
 
 
 	/*if (!$_POST['fname'] || !$_POST['lname']) {
@@ -88,10 +88,10 @@ if (isset($_POST)){
 	if (!isset($address) || $address === "") {
 		$_SESSION['errors']['address'] = 'Address is required.'; 
 	}
-	if (!isset($contactno) || $contactno === "") {
-		$_SESSION['errors']['contactno'] = 'Contact Number is required.'; 
+	if (!isset($contactNo) || $contactNo === "") {
+		$_SESSION['errors']['contactNo'] = 'Contact Number is required.'; 
 	}
-	if (!isset($bday) || $bday === "") {
+	if (!isset($birthday) || $birthday === "") {
 		$_SESSION['errors']['bday'] = 'Birth Date is required.'; 
 	}
 	if (!isset($email) || $email === "") {
@@ -116,7 +116,7 @@ if (isset($_POST)){
 		header("Location: ". getBaseUrl() . "/manage-patients/add.php");
 		die();
 	}
-	$query = "INSERT INTO patient (fname,lname,address,birthday,mi,email,gender,contactNo) VALUES ('$fname' , '$lname', '$address', '$bday', '$mi', '$email', '$gender', '$contactno')";
+	$query = "INSERT INTO patient (fname,lname,address,birthday,mi,email,gender,contactNo) VALUES ('$fname' , '$lname', '$address', '$birthday', '$mi', '$email', '$gender', '$contactno')";
 	$test = mysqli_query($con, $query);
 	$_SESSION['msg'] = "PATIENT SAVED";
 	header("Location: ". getBaseUrl() . "/manage-patients/add.php");

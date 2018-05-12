@@ -1,4 +1,4 @@
-<?php
+ <?php
 // database query and calls
 function getUsers() {
   $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPassword'],$GLOBALS['dbName']);

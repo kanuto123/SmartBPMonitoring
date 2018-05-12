@@ -476,7 +476,7 @@ footer.sticky-footer {
     width: calc(100% - 55px);
   }
 }
-.msg{
+/*.msg{
   margin: 1px auto;
   padding: 1px;
   border-radius: 1px;
@@ -485,7 +485,7 @@ footer.sticky-footer {
   border: 5px solid #3c763d;
   width: 15%;
   text-align: center; 
-}
+}*/
 .del_btn {
   /*text-decoration: none;
   padding: 2px 5px;*/
@@ -494,11 +494,11 @@ footer.sticky-footer {
   background: #800000;*/
   
   
-}
+/*}
 .edit_btn {
   text-decoration: none;
   padding: 2px 5px;
   background: #2E8B57;
   color: white;
   border-radius: 3px;
-}
+}*/
