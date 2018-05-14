@@ -1,5 +1,16 @@
  <?php
 // database query and calls
+function updateUser(){
+ $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPassword'],$GLOBALS['dbName']);
+  // Check connection
+  if (mysqli_connect_errno())
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+  $id = $_GET['edit'];
+  return $results = mysqli_query($con,"SELECT * FROM patient WHERE id=$id"); 
+}
+
 function getUsers() {
   $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPassword'],$GLOBALS['dbName']);
   // Check connection
@@ -42,7 +53,7 @@ function getUserStaffs() {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
-  $query = "SELECT CONCAT(lname, ', ', fname, ' ', mi) as fullname, email, id FROM users WHERE patient_id = 0";
+  $query = "SELECT CONCAT(lname, ', ', fname, ' ', mi) as fullname, email, address, contactNo, gender, birthday, id FROM users WHERE patient_id = 0";
   $results = mysqli_query($con,$query);
   return $results;
 }

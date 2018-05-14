@@ -10,8 +10,6 @@ if (mysqli_connect_errno()) {
 }
 
 if (isset($_POST)){
-	// print_r($_POST);
-	// die();
 	$fname = $_POST['fname'];
 	$lname = $_POST['lname'];
 	$address = $_POST['address'];
@@ -20,7 +18,9 @@ if (isset($_POST)){
 	$email = $_POST['email'];
 	$gender = isset($_POST['gender']) ? $_POST['gender'] : "";
 	$contactNo = $_POST['contactNo'];
-	$password = md5($_POST['password']);
+	$password = $_POST['password'];
+	$password2 = $_POST['password2'];
+
 
 	if (!isset($fname) || $fname === "") {
 		$json['errors']['fname'] = 'First name is required.';
@@ -47,9 +47,14 @@ if (isset($_POST)){
 		$json['errors']['gender'] = 'Gender is required.'; 
 	}
 	if (!isset($password) || $password === "") {
-		$json['errors']['password'] = 'password is required.'; 
+		$json['errors']['password'] = 'Password is required.'; 
 	}
-
+	if (!isset($password2) || $password2 === "") {
+		$json['errors']['password2'] = 'Password is required.'; 
+	}
+	if ($password !== $password2) {
+		$json['errors']['password'] = 'Password does not match.'; 
+	}
 	if (isset($json['errors'])) {	
 		echo json_encode($json, 200);
 		die();
@@ -60,7 +65,7 @@ if (isset($_POST)){
 
 	$password = md5($password);
 
-	$queryUser = "INSERT INTO users (patient_id,email,fname,lname,mi,password,address,contactNo, gender, birthday, password) VALUES (0 , '$email', '$fname', '$lname', '$mi', '$password', '$address', '$contactNo', '$gender', '$birthday', '$password')";
+	$queryUser = "INSERT INTO users (patient_id,email,fname,lname,mi,password,address,contactNo,gender,birthday) VALUES (0 , '$email', '$fname', '$lname', '$mi', '$password', '$address', '$contactNo', '$gender', '$birthday')";
 	mysqli_query($con, $queryUser);
 
 	$json['messages'] = "User successfully added!";

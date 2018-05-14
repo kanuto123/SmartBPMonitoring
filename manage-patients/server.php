@@ -6,19 +6,37 @@ $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPasswo
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   die();
+}
+
+	if (isset($_GET['edit'])){
+		echo $id = $_GET['edit'];
+		$query = "SELECT * FROM patient WHERE id=$id";
+		$ret = mysqli_query($con, $query);
+
+		//$_SESSION['msg'] = "Address updated";
+		header("Location: ". getBaseUrl() . "/manage-patients/update.php?edit=$id");
+		die();
 	}
 
-		if (isset($_POST['update'])) {
-		$fname  = mysqli_real_escape_string($_POST['fname']);
-		$lname = mysqli_real_escape_string($_POST['lname']);
-		$address = mysqli_real_escape_string($_POST['address']);
-		$birthday = mysqli_real_escape_string($_POST['birthday']);
-		$mi  = mysqli_real_escape_string($_POST['mi']);
-		$gender  = mysqli_real_escape_string($_POST['gender']);
-		$contactNo  = mysqli_real_escape_string($_POST['contactNo']);
-		$id = mysqli_real_escape_string($_POST['id']);
+	if (isset($_POST['update'])) {
+		$fname  = $_POST['fname'];
+		$lname = $_POST['lname'];
+		$address = $_POST['address'];
+		$birthday = $_POST['bday'];
+		$mi  = $_POST['mi'];
+		$email  = $_POST['email'];
+		$gender  = $_POST['gender'];
+		$contactNo  = $_POST['contactNo'];
+		$id = $_POST['id'];
+
+		$query = "UPDATE patient SET fname='$fname',lname='$lname',address='$address',birthday='$birthday',mi='$mi',gender='$gender',contactNo='$contactNo',email='$email' WHERE id=$id";
+		$res = mysqli_query($con, $query);
+		$_SESSION['msg'] = "Address updated";
+		//header("Location: ". getBaseUrl() . "/manage-patients/update.php?edit=$id");
+		header("Location:". getBaseUrl() . "/manage-patients/");
+		die();
 	}
-		if (isset($_GET['del'])){
+	if (isset($_GET['del'])){
 		$id = $_GET['del'];
 		$query = "DELETE FROM patient WHERE id='$id'";
 		mysqli_query($con, $query);
@@ -26,21 +44,6 @@ if (mysqli_connect_errno()) {
 		header("Location: ". getBaseUrl() . "/manage-patients/index.php");
 		die();
 	}
-	/*	if (isset($_POST['update'])) {
-		$fname  = mysqli_real_escape_string($_POST['fname']);
-		$lname = mysqli_real_escape_string($_POST['lname']);
-		$address = mysqli_real_escape_string($_POST['address']);
-		$bday = mysqli_real_escape_string($_POST['bday']);
-		$mi  = mysqli_real_escape_string($_POST['mi']);
-		$gender  = mysqli_real_escape_string($_POST['gender']);
-		$contactno  = mysqli_real_escape_string($_POST['contactno']);
-		$id = mysqli_real_escape_string($_POST['id']);
-
-		mysqli_query($con, "UPDATE patients SET fname='$fname',lname='$lname',address='$address',birthday='$bday',mi='$mi',gender='$gender',contactNo='$contactno' WHERE id=$id");
-		$_SESSION['msg'] = "Address updated";
-		header("Location: ". getBaseUrl() . "/manage-patients/update.php");
-		die();
-	}*/
 	/*if (isset($_GET['edit'])){
 		$id = $_GET['edit'];
 		$edit_state = true;
@@ -133,15 +136,7 @@ if (isset($_POST)){
 		$contactno  = mysqli_real_escape_string($_POST['contactno']);
 		$id = mysqli_real_escape_string($_POST['id']);
 	}*/
-		if (isset($_GET['edit'])){
-		$id = $_GET['edit'];
-		$edit_state = true;
-		$query = "SELECT * FROM patient WHERE id=$id";
-		mysqli_query($con, $query);
-		$_SESSION['msg'] = "Address updated";
-		header("Location: ". getBaseUrl() . "/manage-patients/update.php");
-		die();
-	}
+	
 /*update*/
 /*	if (isset($_POST['update'])) {
 		 $fname  = mysqli_real_escape_string($_POST['fname']);

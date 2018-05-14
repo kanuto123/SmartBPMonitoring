@@ -10,7 +10,7 @@
         <li class="breadcrumb-item">
           <a href="<?php echo getBaseUrl() ?>/manage-patients/">Manage Patients</a>
         </li>
-        <li class="breadcrumb-item active">Add New Patient</li>
+        <li class="breadcrumb-item active">Edit Patient</li>
       </ol>
       <!-- Example DataTables Card-->
       <?php include("../pages/patient-form-update.php"); ?>

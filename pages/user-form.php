@@ -46,20 +46,20 @@
             <div class="col-md-6">
                 <label for="InputGender"><strong>Gender</strong></label>
                 <br>
-                <input type="radio" id="gender" value="male"> Male
-                <input type="radio" id="gender" value="female"> Female
+                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> Female
                 <br>
             <span style="color: red;" id="gender_error"></span>
             </div>
             <div class="col-md-6">
             <label for="InputPassword"><strong>Password</strong></label>
-            <input class="form-control" id="password" type="password"  placeholder="Enter password">
+            <input class="form-control" name="password" id="password" type="password"  placeholder="Enter password">
             <span style="color: red;" id="password_error"></span>
           </div>
           <div class="col-md-6">
             <label for="InputPassword"><strong>Confirm Password</strong></label>
-            <input class="form-control" id="password" type="password"  placeholder="Confirm password">
-            <span style="color: red;" id="password_error"></span>
+            <input class="form-control" name="password2" id="password2" type="password"  placeholder="Confirm password">
+            <span style="color: red;" id="password2_error"></span>
           </div>
           </div>
           <br>
@@ -81,8 +81,9 @@
       contactNo: $("#contactNo").val(),
       birthday: $("#birthday").val(),
       email: $("#email").val(),
-      gender: $("#gender:checked").val()
-      email: $("#password").val(),
+      gender: $("input[type='radio'][name='gender']:checked").val(),
+      password: $("#password").val(),
+      password2: $("#password2").val(),
     }
 
     $.post(url, params, function (o) {
@@ -99,7 +100,7 @@
         $(".dynamic-alert").addClass('alert-danger');
         // $(".error-messages").html(o.errors);
         // clear messages
-        let fields = ['fname', 'lname', 'mi', 'address', 'contactNo', 'birthday', 'email', 'gender', 'password'];
+        let fields = ['fname', 'lname', 'mi', 'address', 'contactNo', 'birthday', 'email', 'gender', 'password', 'password2'];
         $.each(fields, function( index, value ) {
           $("#"+value+"_error").html("");
         });
@@ -120,7 +121,10 @@
     $("#contactNo").val("");
     $("#birthday").val("");
     $("#email").val("");
-    $("#gender").val("");
+    $("input[type='radio'][name='gender']:checked").prop('checked',false);
+    $("#password").val("");
+    $("#password2").val("");
+
   }
 </script>
 

@@ -50,18 +50,18 @@
             </td>
           </tr>
           <?php } ?>
-          <?php $results = getUserStaffs() ?>
-          <?php while ($row = mysqli_fetch_assoc($results)) { ?>
+          <?php $results1 = getUserStaffs() ?>
+          <?php while ($row1 = mysqli_fetch_assoc($results1)) { ?>
           <tr>
-            <td><?php echo $row['fullname']; ?></td>
-            <td><?php echo isset($row['address']) ? $row['address'] : "n/a"; ?></td>
-            <td><?php echo isset($row['contactNo']) ? $row['contactNo'] : "n/a"; ?></td>
-            <td><?php echo isset($row['birthday']) ? $row['birthday'] : "n/a"; ?></td>
-            <td><?php echo $row['email']; ?></td>
-            <td><?php echo isset($row['gender']) ? $row['gender'] : "n/a"; ?></td>
+            <td><?php echo $row1['fullname']; ?></td>
+            <td><?php echo $row1['address']; ?></td>
+            <td><?php echo $row1['contactNo']; ?></td>
+            <td><?php echo $row1['birthday']; ?></td>
+            <td><?php echo $row1['email']; ?></td>
+            <td><?php echo $row1['gender']; ?></td>
             <td>
             <button type="submit" class="btn btn-primary btn-sm">Edit</button>
-             <button type="button" class="btn btn-primary btn-sm" onclick="deleteUser(<?php echo $row['id'] ?>)">Delete</button>
+             <button type="button" class="btn btn-primary btn-sm" onclick="deleteUser(<?php echo $row1['id'] ?>)">Delete</button>
             <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
             </td>
           </tr>

@@ -1,6 +1,6 @@
 <div class="card mb-3">
   <div class="card-header">
-    <i class="fa fa-user"></i> Add Patient
+    <i class="fa fa-user"></i> Update Patient
   </div>
   <div class="card-body">
     <?php if (isset($_SESSION['msg'])): ?>
@@ -14,53 +14,60 @@
     <br>
     <div class="table-responsives">
     <form method="POST" action="<?php echo getBaseUrl() ?>/manage-patients/server.php">
-      <input type="hidden" name="id" value="<?php echo $id; ?>">
+      <?php
+        if (isset($_GET['edit'])){
+          $id = $_GET['edit'];
+          $users = updateUser();
+          $row = mysqli_fetch_array($users);
+        }
+      ?>
+      <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
       <div class="form-group">
         <div class="form-row">
           <div class="col-md-6">
             <label for="InputFname"><strong>First name</strong></label>
-            <input class="form-control" name="fname" type="text"  placeholder="Enter first name">
+            <input class="form-control" name="fname" type="text" value="<?php echo $row['fname']; ?>">
           </div>
           <div class="col-md-6">
             <label for="InputLname"><strong>Last name</strong></label>
-            <input class="form-control" name="lname" type="text"  placeholder="Enter last name">
+            <input class="form-control" name="lname" type="text" value="<?php echo $row['lname']; ?>">
           </div>
           <div class="col-md-6">
             <label for="InputMi"><strong>Middle Initial</strong></label>
-            <input class="form-control" name="mi" type="text"  placeholder="Enter middle inital">                   
+            <input class="form-control" name="mi" type="text" value="<?php echo $row['mi']; ?>">                   
           </div>                      
           <div class="col-md-6">
             <label for="InputAddress"><strong>Address</strong></label>
-            <input class="form-control" name="address" type="text"  placeholder="Enter address">
+            <input class="form-control" name="address" type="text" value="<?php echo $row['address']; ?>">
           </div>
           <div class="col-md-6">
             <label for="InputContactNo"><strong>Contact Number</strong></label>
-            <input class="form-control" name="contactno" type="text"  placeholder="Enter contact number">
+            <input class="form-control" name="contactNo" type="text" value="<?php echo $row['contactNo']; ?>">
           </div>
           <div class="col-md-6">
             <label for="InputBirthday"><strong>Birth Date</strong></label>
-            <input class="form-control" name="bday" type="date"  placeholder="Enter birth date">
+            <input class="form-control" name="bday" type="date" value="<?php echo $row['birthday']; ?>">
           </div>
           <div class="col-md-6">
             <label for="InputEmailAddress"><strong>Email address</strong></label>
-            <input class="form-control" name="email" type="email"  placeholder="Enter email">
+            <input class="form-control" name="email" type="email" value="<?php echo $row['email']; ?>">
           </div>
           <div class="col-md-6">
             <label for="InputGender"><strong>Gender</strong></label>
             <br>
-            <input type="radio" name="gender" value="male"> Male
+            <?php if($row['gender'] == "male"){ ?>
+            <input type="radio" name="gender" value="male" checked="checked"> Male
             <input type="radio" name="gender" value="female"> Female
+            <?php } else if($row['gender'] == "female"){ ?>
+            <input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female" checked="checked"> Female
+            <?php } ?>
             <br>
           </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Add Patient</button>
+        <button type="submit" name="update" class="btn btn-primary">Update Patient</button>
       </div>
-      <?php if ($edit_state==false):?> 
-      <button type="submit" name="save" class="btn">Save</button>
-    <?php else:  ?>
-      <button type="submit" name="update" class="btn">Update</button>
-    <?php endif ?>
     </form>
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
