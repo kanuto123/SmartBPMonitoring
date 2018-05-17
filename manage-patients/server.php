@@ -18,6 +18,8 @@ if (mysqli_connect_errno()) {
 		die();
 	}
 
+	
+
 	if (isset($_POST['update'])) {
 		$fname  = $_POST['fname'];
 		$lname = $_POST['lname'];
@@ -30,8 +32,17 @@ if (mysqli_connect_errno()) {
 		$id = $_POST['id'];
 
 		$query = "UPDATE patient SET fname='$fname',lname='$lname',address='$address',birthday='$birthday',mi='$mi',gender='$gender',contactNo='$contactNo',email='$email' WHERE id=$id";
+		
 		$res = mysqli_query($con, $query);
-		$_SESSION['msg'] = "Address updated";
+		$_SESSION['msg'] = "Patient updated";
+
+		$searchQuery = "SELECT * FROM users WHERE patient_id=$id LIMIT 1";
+		$res = mysqli_query($con, $searchQuery);
+		$user = mysqli_fetch_assoc($res);
+		$userId = $user['id'];
+		$query = "UPDATE users SET fname='$fname',lname='$lname',address='$address',birthday='$birthday',mi='$mi',gender='$gender',contactNo='$contactNo',email='$email' WHERE id=$userId";
+		$res = mysqli_query($con, $query);
+		/*die();*/
 		//header("Location: ". getBaseUrl() . "/manage-patients/update.php?edit=$id");
 		header("Location:". getBaseUrl() . "/manage-patients/");
 		die();

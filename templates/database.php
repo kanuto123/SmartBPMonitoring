@@ -1,6 +1,6 @@
  <?php
 // database query and calls
-function updateUser(){
+function updatePatient(){
  $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPassword'],$GLOBALS['dbName']);
   // Check connection
   if (mysqli_connect_errno())
@@ -11,7 +11,7 @@ function updateUser(){
   return $results = mysqli_query($con,"SELECT * FROM patient WHERE id=$id"); 
 }
 
-function getUsers() {
+function getPatient() {
   $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPassword'],$GLOBALS['dbName']);
   // Check connection
   if (mysqli_connect_errno())
@@ -20,6 +20,27 @@ function getUsers() {
   }
   return $results = mysqli_query($con,"SELECT * FROM patient");
 }
+
+/*function updateUser(){
+ $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPassword'],$GLOBALS['dbName']);
+  // Check connection
+  if (mysqli_connect_errno())
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+  $id = $_GET['edit'];
+  return $results = mysqli_query($con,"SELECT * FROM users WHERE id=$id"); 
+}
+
+function getUser() {
+  $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPassword'],$GLOBALS['dbName']);
+  // Check connection
+  if (mysqli_connect_errno())
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+  return $results = mysqli_query($con,"SELECT * FROM users");
+}*/
 
 function getUserWithPatient() {
   $con=mysqli_connect($GLOBALS['dbHost'],$GLOBALS['dbUsername'],$GLOBALS['dbPassword'],$GLOBALS['dbName']);

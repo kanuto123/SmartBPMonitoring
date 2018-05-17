@@ -13,13 +13,8 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-       <!--  <?php if (isset($_SESSION['msg3'])) { ?>
-            <div class="alert alert-success" role="alert">
-            <center><?php echo $_SESSION['msg3'] ?></center>
-            </div>
-        <?php } ?> -->
         <div class="alert alert-success dynamic-alert" role="alert" style="display: none;"><center class="error-messages"></center></div>
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th><center>Full Name</center></th>
@@ -28,14 +23,13 @@
             <th><center>Birth Date</center></th>
             <th><center>Email Address</center></th>
             <th><center>Gender</th>
-            <div class="col">
             <th><center>Action</center></th>
             </div>
           </tr>
         </thead>
         <tbody>
           <?php $results = getUserWithPatient() ?>
-          <?php while ($row = mysqli_fetch_assoc($results)) { ?>
+          <?php while ($row = mysqli_fetch_array($results)) { ?>
           <tr>
             <td><?php echo $row['fullname']; ?></td>
             <td><?php echo $row['address']; ?></td>
@@ -44,9 +38,8 @@
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['gender']; ?></td>
             <td>
-            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
-            <button type="button" class="btn btn-primary btn-sm" onclick="deleteUser(<?php echo $row['id'] ?>)">Delete</button>
-            <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
+            <a class="del_btn btn btn-primary btn-sm" href="../manage-user/server.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a>
+                <button type="button" class="btn btn-danger btn-sm" onclick="deletePatient(<?php echo $row['id'] ?>)"><i class="fa fa-trash"></i></button>            <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
             </td>
           </tr>
           <?php } ?>
@@ -60,8 +53,8 @@
             <td><?php echo $row1['email']; ?></td>
             <td><?php echo $row1['gender']; ?></td>
             <td>
-            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
-             <button type="button" class="btn btn-primary btn-sm" onclick="deleteUser(<?php echo $row1['id'] ?>)">Delete</button>
+            <a class="del_btn btn btn-primary btn-sm" href="../manage-user/server.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a>
+                <button type="button" class="btn btn-danger btn-sm" onclick="deletePatient(<?php echo $row['id'] ?>)"><i class="fa fa-trash"></i></button>
             <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
             </td>
           </tr>
@@ -72,21 +65,24 @@
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
-<!-- CSS -->
+<!-- Bootstrap core JavaScript-->
+<!-- Custom scripts for this page-->
+<script src="<?php echo getBaseUrl() ?>/vendor/jquery/jquery.min.js"></script>
 <!-- Page level plugin CSS-->
 <link href="<?php echo getBaseUrl() ?>/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
 <!-- SCRIPTS -->
-<script src="<?php echo getBaseUrl() ?>/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo getBaseUrl() ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="<?php echo getBaseUrl() ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
 <script src="<?php echo getBaseUrl() ?>/vendor/datatables/jquery.dataTables.js"></script>
 <script src="<?php echo getBaseUrl() ?>/vendor/datatables/dataTables.bootstrap4.js"></script>
-<!-- Custom scripts for this page-->
-<script src="<?php echo getBaseUrl() ?>/assets/js/sb-admin-datatables.min.js"></script>
+<script src="<?php echo getBaseUrl() ?>/assets/js/sb-admin.min.js"></script>
 <script type="text/javascript">
+  $(function(){
+    $("#dataTable1").DataTable();
+  })
+
   function deleteUser(idx) {
     let url = "<?php echo getBaseUrl() ?>/api/getUserInfoDelete.php";
     // $(".modal-message").html('<span class="fa fa-spinner fa-spin"></span> Loading patient info...');

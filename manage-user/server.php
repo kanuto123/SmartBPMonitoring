@@ -7,6 +7,44 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   die();
 }
+
+if (isset($_GET['edit'])){
+		echo $id = $_GET['edit'];
+		$query = "SELECT * FROM users WHERE id=$id";
+		$ret = mysqli_query($con, $query);
+
+		//$_SESSION['msg'] = "Address updated";
+		header("Location: ". getBaseUrl() . "/manage-user/update.php?edit=$id");
+		die();
+	}
+
+	
+
+	if (isset($_POST['update'])) {
+		$fname  = $_POST['fname'];
+		$lname = $_POST['lname'];
+		$address = $_POST['address'];
+		$birthday = $_POST['bday'];
+		$mi  = $_POST['mi'];
+		$email  = $_POST['email'];
+		$gender  = $_POST['gender'];
+		$contactNo  = $_POST['contactNo'];
+		$id = $_POST['id'];
+
+		$query = "UPDATE users SET fname='$fname',lname='$lname',address='$address',birthday='$birthday',mi='$mi',gender='$gender',contactNo='$contactNo',email='$email' WHERE id=$id";
+		
+		$res = mysqli_query($con, $query);
+		$_SESSION['msg'] = "User updated";
+
+		$searchQuery = "SELECT * FROM patient WHERE id=$id LIMIT 1";
+		$res = mysqli_query($con, $searchQuery);
+		$patient = mysqli_fetch_assoc($res);
+		$patientId = $patient['id'];
+		$query = "UPDATE users SET fname='$fname',lname='$lname',address='$address',birthday='$birthday',mi='$mi',gender='$gender',contactNo='$contactNo',email='$email' WHERE id=$patientId";
+		$res = mysqli_query($con, $query);
+		header("Location:". getBaseUrl() . "/manage-user/");
+		die();
+	}
 if (isset($_GET['del'])){
 		$id = $_GET['del'];
         $query = "DELETE FROM users WHERE id='$id'";

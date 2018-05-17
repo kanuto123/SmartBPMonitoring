@@ -24,8 +24,8 @@
           <th><center>Action</center></th>
         </thead>
         <tbody>
-          <?php $users = getUsers() ?>
-          <?php while ($row = mysqli_fetch_array($users)) { ?>
+          <?php $patient = getPatient() ?>
+          <?php while ($row = mysqli_fetch_array($patient)) { ?>
             <tr>
               <td width="20%"><?php echo $row['fname']; ?> <?php echo $row['mi']; ?> <?php echo $row['lname']; ?></td>
               <td width="30%"><?php echo $row['address']; ?></td>

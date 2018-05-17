@@ -13,12 +13,12 @@
     <?php endif ?>
     <br>
     <div class="table-responsives">
-    <form method="POST" action="<?php echo getBaseUrl() ?>/manage-patients/server.php">
+    <form method="POST" action="<?php echo getBaseUrl() ?>/manage-user/server.php">
       <?php
         if (isset($_GET['edit'])){
           $id = $_GET['edit'];
-          $patient = updatePatient();
-          $row = mysqli_fetch_array($patient);
+          $users = updateUser();
+          $row = mysqli_fetch_array($users);
         }
       ?>
       <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
@@ -66,7 +66,7 @@
           </div>
         </div>
         <br>
-        <button type="submit" name="update" class="btn btn-primary">Update Patient</button>
+        <button type="submit" name="update" class="btn btn-primary">Update User</button>
       </div>
     </form>
   </div>

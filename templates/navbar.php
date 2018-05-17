@@ -12,6 +12,7 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
+        <?php if (!$_SESSION['user']['patient_id']) { ?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Manage Patients">
           <a class="nav-link" href="<?php echo getBaseUrl() ?>/manage-patients/">
             <i class="fa fa-fw fa-group"></i>
@@ -24,6 +25,7 @@
             <span class="nav-link-text">Manage Users</span>
           </a>
         </li>
+        <?php } ?>
         <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="tables.php">
             <i class="fa fa-fw fa-user"></i>
