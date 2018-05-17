@@ -26,8 +26,6 @@
     <div class="modal fade" id="deleteModalpatient" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabelpatient" aria-hidden="true"></div>
     <!-- Logout Modal-->
     <?php include("../templates/logout-modal.php"); ?>
-    <!-- Bootstrap core JavaScript-->
-    <?php include("../templates/javascript.php"); ?>
   </div>
 </body>
 

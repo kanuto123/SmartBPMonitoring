@@ -1,4 +1,4 @@
-s<?php include("templates/header.php"); ?>
+<?php include("templates/header.php"); ?>
 <?php
   if (isset($_SESSION['user'])) {
     header("Location: ". getBaseUrl() . "/");
@@ -14,6 +14,7 @@ s<?php include("templates/header.php"); ?>
         <?php if (isset($_SESSION['errors'])) { ?>
           <div class="alert alert-danger" role="alert">
             <?php echo $_SESSION['errors'] ?>
+            <?php unset($_SESSION['errors']) ?>
           </div>
         <?php } ?>
         <form method="POST" action="<?php echo getBaseUrl() ?>/api/login.php">
