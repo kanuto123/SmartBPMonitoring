@@ -1,7 +1,7 @@
 <?php
-$projectName = "KenProject";
+$projectName = "sbmp";
 $dbHost = "localhost";
-$dbName = "smartbp";
+$dbName = "smbp";
 $dbUsername = "root";
 $dbPassword = "";
 

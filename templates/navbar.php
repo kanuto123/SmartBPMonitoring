@@ -25,6 +25,12 @@
             <span class="nav-link-text">Manage Users</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Manage Patients">
+          <a class="nav-link" href="<?php echo getBaseUrl() ?>/user-profile/records.php">
+            <i class="fa fa-fw fa-calendar"></i>
+            <span class="nav-link-text">Records</span>
+          </a>
+        </li>
         <?php } ?>
         <?php if ($_SESSION['user']['patient_id']) { ?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Manage Patients">
@@ -34,8 +40,8 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Manage Patients">
-          <a class="nav-link" href="<?php echo getBaseUrl() ?>/manage-patients/">
-            <i class="fa fa-fw fa-group"></i>
+          <a class="nav-link" href="<?php echo getBaseUrl() ?>/user-profile/records.php">
+            <i class="fa fa-fw fa-calendar"></i>
             <span class="nav-link-text">Records</span>
           </a>
         </li>
