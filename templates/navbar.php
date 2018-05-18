@@ -39,13 +39,13 @@
             <span class="nav-link-text">My Profile</span>
           </a>
         </li>
+        <?php } ?>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="User Records">
-          <a class="nav-link" href="<?php echo getBaseUrl() ?>/user-profile/">
-            <i class="fa fa-fw fa-file-text"></i>
+          <a class="nav-link" href="<?php echo getBaseUrl() ?>/user-profile/records.php">
+            <i class="fa fa-fw fa-calendar"></i>
             <span class="nav-link-text">Records</span>
           </a>
         </li>
-        <?php } ?>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
