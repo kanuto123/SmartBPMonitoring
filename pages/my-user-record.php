@@ -2,11 +2,11 @@
   <div class="card-header">
     <div class="row">
       <div class="col-sm-6">
-        <i class="fa fa-group"></i> Manage Patient Information</i>
+        <i class="fa fa-file-text"></i> My Records</i>
       </div>
       <div class="col-sm-6">
         <a href="<?php echo getBaseUrl() ?>/manage-patients/add.php" class="btn btn-outline-success btn-sm pull-right">
-          <i class="fa fa-plus"></i> ADD NEW PATIENT
+          <i class="fa fa-plus"></i> ADD NEW RECORD
         </a>
       </div>
     </div>

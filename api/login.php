@@ -25,6 +25,7 @@ $user = mysqli_fetch_assoc($res);
 if ($user) { 
   if ($user['password'] == md5($password)) {
     $_SESSION['user'] = $user;
+    $_SESSION['email'] = $email;
     $_SESSION['errors'] = null;
     header("Location: ". getBaseUrl() . "/");
     die();

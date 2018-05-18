@@ -2,18 +2,18 @@
 <?php require("../templates/database.php"); ?>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-<?php include("../templates/navbar.php"); ?>
+ <?php include("../templates/navbar.php"); ?>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Manage Patients</a>
+          <a href="<?php echo getBaseUrl() ?>/user-profile/profile.php">My Profile</a>
         </li>
-        <li class="breadcrumb-item active">Patient  Information</li>
+        <li class="breadcrumb-item active">Edit My Profile</li>
       </ol>
-      <!-- Area Chart Example-->
-      <?php include("../pages/patients-table.php"); ?>
+      <!-- Example DataTables Card-->
+      <?php include("../pages/my-user-profile-update.php"); ?>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -22,10 +22,10 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-
-    <div class="modal fade" id="deleteModalpatient" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabelpatient" aria-hidden="true"></div>
     <!-- Logout Modal-->
     <?php include("../templates/logout-modal.php"); ?>
+    <!-- Bootstrap core JavaScript-->
+    <?php include("../templates/javascript.php"); ?>
   </div>
 </body>
 

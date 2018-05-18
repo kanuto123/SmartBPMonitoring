@@ -8,15 +8,6 @@ if (mysqli_connect_errno()) {
   die();
 }
 
-/*if (isset($_GET['edit'])){
-		echo $id = $_GET['edit'];
-		$query = "SELECT * FROM users WHERE id=$id";
-		$ret = mysqli_query($con, $query);
-
-		//$_SESSION['msg'] = "Address updated";
-		header("Location: ". getBaseUrl() . "/manage-user/update.php?edit=$id");
-		die();
-	}*/
 	if (isset($_GET['edit']) && isset($_GET['editPid'])){
 		echo $id = $_GET['edit'];
         	 $patient_id = $_GET['editPid'];
@@ -27,8 +18,6 @@ if (mysqli_connect_errno()) {
 		header("Location: ". getBaseUrl() . "/manage-user/update.php?edit=$id&&editPid=$patient_id");
 		die();
 	}
-
-	
 
 	if (isset($_POST['update'])) {
 		$fname  = $_POST['fname'];
@@ -57,6 +46,7 @@ if (mysqli_connect_errno()) {
 		header("Location:". getBaseUrl() . "/manage-user/");
 		die();
 	}
+	
 if (isset($_GET['del'])){
 		$id = $_GET['del'];
         $query = "DELETE FROM users WHERE id='$id'";

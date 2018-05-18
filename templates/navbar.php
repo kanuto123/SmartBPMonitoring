@@ -25,17 +25,23 @@
             <span class="nav-link-text">Manage Users</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="User Profile">
+          <a class="nav-link" href="<?php echo getBaseUrl() ?>/user-profile/change-password-admin.php">
+            <i class="fa fa-fw fa-key"></i>
+            <span class="nav-link-text">Change Password</span>
+          </a>
+        </li>
         <?php } ?>
         <?php if ($_SESSION['user']['patient_id']) { ?>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Manage Patients">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="User Profile">
           <a class="nav-link" href="<?php echo getBaseUrl() ?>/user-profile/profile.php">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">My Profile</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Manage Patients">
-          <a class="nav-link" href="<?php echo getBaseUrl() ?>/manage-patients/">
-            <i class="fa fa-fw fa-group"></i>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="User Records">
+          <a class="nav-link" href="<?php echo getBaseUrl() ?>/user-profile/">
+            <i class="fa fa-fw fa-file-text"></i>
             <span class="nav-link-text">Records</span>
           </a>
         </li>
@@ -48,8 +54,8 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
+       <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-envelope"></i>
             <span class="d-lg-none">Messages
@@ -137,7 +143,7 @@
               </span>
             </div>
           </form>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>

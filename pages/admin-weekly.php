@@ -2,12 +2,7 @@
   <div class="card-header">
     <div class="row">
       <div class="col-sm-6">
-        <i class="fa fa-group"></i> Manage Patient Information</i>
-      </div>
-      <div class="col-sm-6">
-        <a href="<?php echo getBaseUrl() ?>/manage-patients/add.php" class="btn btn-outline-success btn-sm pull-right">
-          <i class="fa fa-plus"></i> ADD NEW PATIENT
-        </a>
+        <i class="fa fa-group"></i> View Weekly Records</i>
       </div>
     </div>
   </div>
@@ -24,8 +19,8 @@
           <th><center>Action</center></th>
         </thead>
         <tbody>
-          <?php $patient = getPatient() ?>
-          <?php while ($row = mysqli_fetch_array($patient)) { ?>
+          <?php $weekly = getAdminWeeklyRecord() ?>
+          <?php while ($row = mysqli_fetch_array($weekly)) { ?>
             <tr>
               <td width="20%"><?php echo $row['fname']; ?> <?php echo $row['mi']; ?> <?php echo $row['lname']; ?></td>
               <td width="30%"><?php echo $row['address']; ?></td>

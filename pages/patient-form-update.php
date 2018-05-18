@@ -55,12 +55,12 @@
           <div class="col-md-6">
             <label for="InputGender"><strong>Gender</strong></label>
             <br>
-            <?php if($row['gender'] == "male"){ ?>
-            <input type="radio" name="gender" value="male" checked="checked"> Male
-            <input type="radio" name="gender" value="female"> Female
-            <?php } else if($row['gender'] == "female"){ ?>
-            <input type="radio" name="gender" value="male"> Male
-            <input type="radio" name="gender" value="female" checked="checked"> Female
+            <?php if($row['gender'] == "Male"){ ?>
+            <input type="radio" name="gender" value="Male" checked="checked"> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <?php } else if($row['gender'] == "Female"){ ?>
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female" checked="checked"> Female
             <?php } ?>
             <br>
           </div>

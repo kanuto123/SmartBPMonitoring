@@ -8,12 +8,12 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Manage Patients</a>
+          <a href="#">Manage Records</a>
         </li>
-        <li class="breadcrumb-item active">Patient  Information</li>
+        <li class="breadcrumb-item active">My Records</li>
       </ol>
       <!-- Area Chart Example-->
-      <?php include("../pages/patients-table.php"); ?>
+      <?php include("../pages/my-user-record.php"); ?>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -22,11 +22,12 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-
-    <div class="modal fade" id="deleteModalpatient" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabelpatient" aria-hidden="true"></div>
+     <div class="modal fade" id="deleteModaluser" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabeluser" 
+     aria-hidden="true"></div>
     <!-- Logout Modal-->
     <?php include("../templates/logout-modal.php"); ?>
   </div>
 </body>
 
 </html>
+ 

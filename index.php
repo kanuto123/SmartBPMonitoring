@@ -22,7 +22,7 @@
               <div class="mr-5">Number of Tests</div>
               <div class="mr-5">Daily</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/pages/daily-table.php">
+            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/records/daily-table.php">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -39,7 +39,7 @@
               <div class="mr-5">Number of Tests</div>
               <div class="mr-5">Weekly</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/records/weekly-table.php">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -56,7 +56,7 @@
               <div class="mr-5">Number of Tests</div>
               <div class="mr-5">Monthly</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/records/monthly-table.php">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -73,7 +73,7 @@
               <div class="mr-5">Number of Tests</div>
               <div class="mr-5">Yearly</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/records/yearly-table.php">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>

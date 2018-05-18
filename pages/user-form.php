@@ -51,7 +51,7 @@
                 <br>
             <span style="color: red;" id="gender_error"></span>
             </div>
-            <div class="col-md-6">
+          <div class="col-md-6">
             <label for="InputPassword"><strong>Password</strong></label>
             <input class="form-control" name="password" id="password" type="password"  placeholder="Enter password">
             <span style="color: red;" id="password_error"></span>
