@@ -98,7 +98,7 @@
       function initializeCalendar () {
         var url = "<?php echo getBaseUrl() ?>/api/retrieveCalendarData.php";
         var patientId = "<?php echo $_SESSION['user']['patient_id'] ?>";
-        if (patientId) {
+        if (parseInt(patientId)) {
           $("#calendarRecords").fullCalendar({
             header: {
               center: views // buttons for switching between views
