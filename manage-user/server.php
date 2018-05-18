@@ -8,13 +8,23 @@ if (mysqli_connect_errno()) {
   die();
 }
 
-if (isset($_GET['edit'])){
+/*if (isset($_GET['edit'])){
 		echo $id = $_GET['edit'];
 		$query = "SELECT * FROM users WHERE id=$id";
 		$ret = mysqli_query($con, $query);
 
 		//$_SESSION['msg'] = "Address updated";
 		header("Location: ". getBaseUrl() . "/manage-user/update.php?edit=$id");
+		die();
+	}*/
+	if (isset($_GET['edit']) && isset($_GET['editPid'])){
+		echo $id = $_GET['edit'];
+        	 $patient_id = $_GET['editPid'];
+			 $query = "SELECT * FROM users WHERE id=$id && patient_id=$patient_id";
+		$ret = mysqli_query($con, $query);
+
+		//$_SESSION['msg'] = "Address updated";
+		header("Location: ". getBaseUrl() . "/manage-user/update.php?edit=$id&&editPid=$patient_id");
 		die();
 	}
 
@@ -30,18 +40,20 @@ if (isset($_GET['edit'])){
 		$gender  = $_POST['gender'];
 		$contactNo  = $_POST['contactNo'];
 		$id = $_POST['id'];
+		$patient_id = $_POST['patient_id'];
 
 		$query = "UPDATE users SET fname='$fname',lname='$lname',address='$address',birthday='$birthday',mi='$mi',gender='$gender',contactNo='$contactNo',email='$email' WHERE id=$id";
 		
 		$res = mysqli_query($con, $query);
 		$_SESSION['msg'] = "User updated";
 
-		$searchQuery = "SELECT * FROM patient WHERE id=$id LIMIT 1";
+		$searchQuery = "SELECT * FROM patient WHERE id=$patient_id LIMIT 1";
 		$res = mysqli_query($con, $searchQuery);
 		$patient = mysqli_fetch_assoc($res);
-		$patientId = $patient['id'];
-		$query = "UPDATE users SET fname='$fname',lname='$lname',address='$address',birthday='$birthday',mi='$mi',gender='$gender',contactNo='$contactNo',email='$email' WHERE id=$patientId";
+		$patientid = $patient['id'];
+		$query = "UPDATE patient SET fname='$fname',lname='$lname',address='$address',birthday='$birthday',mi='$mi',gender='$gender',contactNo='$contactNo',email='$email' WHERE id=$patient_id";
 		$res = mysqli_query($con, $query);
+		
 		header("Location:". getBaseUrl() . "/manage-user/");
 		die();
 	}

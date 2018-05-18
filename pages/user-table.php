@@ -38,8 +38,10 @@
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['gender']; ?></td>
             <td>
-            <a class="del_btn btn btn-primary btn-sm" href="../manage-user/server.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a>
-                <button type="button" class="btn btn-danger btn-sm" onclick="deletePatient(<?php echo $row['id'] ?>)"><i class="fa fa-trash"></i></button>            <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
+              <!-- <a class="del_btn btn btn-primary btn-sm" href="../manage-user/server.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a> -->
+              <a class="del_btn btn btn-primary btn-sm" href="../manage-user/server.php?edit=<?php echo $row['id']; ?>
+              &&editPid=<?php echo $row['patient_id']; ?>"><i class="fa fa-edit"></i></a>
+              <button type="button" class="btn btn-danger btn-sm" onclick="deleteUser(<?php echo $row['id'] ?>)"><i class="fa fa-trash"></i></button>            
             </td>
           </tr>
           <?php } ?>
@@ -53,9 +55,10 @@
             <td><?php echo $row1['email']; ?></td>
             <td><?php echo $row1['gender']; ?></td>
             <td>
-            <a class="del_btn btn btn-primary btn-sm" href="../manage-user/server.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a>
-                <button type="button" class="btn btn-danger btn-sm" onclick="deletePatient(<?php echo $row['id'] ?>)"><i class="fa fa-trash"></i></button>
-            <!-- <a class="del_btn" href="../manage-user/server.php?del=<?php echo $row['id']; ?>"> <button class=“btn btn-primary btn-sm”>Delete</button></a> -->
+            <!-- <a class="del_btn btn btn-primary btn-sm" href="../manage-user/server.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a> -->
+              <a class="del_btn btn btn-primary btn-sm" href="../manage-user/server.php?edit=<?php echo $row1['id']; ?>
+              &&editPid=<?php echo $row1['patient_id']; ?>"><i class="fa fa-edit"></i></a>
+              <button type="button" class="btn btn-danger btn-sm" onclick="deleteUser(<?php echo $row1['id'] ?>)"><i class="fa fa-trash"></i></button>
             </td>
           </tr>
           <?php } ?>    

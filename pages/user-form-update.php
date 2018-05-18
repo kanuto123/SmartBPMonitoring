@@ -1,6 +1,6 @@
 <div class="card mb-3">
   <div class="card-header">
-    <i class="fa fa-user"></i> Update Patient
+    <i class="fa fa-user"></i> Update User
   </div>
   <div class="card-body">
     <?php if (isset($_SESSION['msg'])): ?>
@@ -15,13 +15,15 @@
     <div class="table-responsives">
     <form method="POST" action="<?php echo getBaseUrl() ?>/manage-user/server.php">
       <?php
-        if (isset($_GET['edit'])){
+        if (isset($_GET['edit']) && isset($_GET['editPid'])){
           $id = $_GET['edit'];
+          $patient_id = $_GET['editPid'];
           $users = updateUser();
           $row = mysqli_fetch_array($users);
         }
       ?>
       <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+      <input type="hidden" name="patient_id" value="<?php echo $row['patient_id']; ?>">
       <div class="form-group">
         <div class="form-row">
           <div class="col-md-6">
