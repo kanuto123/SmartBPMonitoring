@@ -13,38 +13,6 @@
         <div class="col-sm-11">
           <button class="btn btn-info btn-sg" data-toggle="modal" data-target="#addRecordModal">ADD EVENT</button>
         </div>
-<<<<<<< HEAD
-      </ol>
-        <div class="modal fade" id="addRecordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <div class="form-row">
-                      <div class="col-md-12">
-                        <label for="InputFname"><strong>Event Name</strong></label>
-                        <input class="form-control" id="eventName" type="text"  placeholder="Enter event name">
-                        <span style="color: red;" id="fname_error"></span>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="InputLname"><strong>Systolic</strong></label>
-                        <input class="form-control" id="bp1" type="text"  placeholder="Enter Systolic">
-                        <span style="color: red;" id="lname_error"></span>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="InputMi"><strong>Diastolic</strong></label>
-                        <input class="form-control" id="bp2" type="text"  placeholder="Enter Diastolic">
-                        <span style="color: red;" id="mi_error"></span>                      
-                      </div>                      
-                    </div>
-=======
       <?php } ?>
       <div class="modal fade" id="addRecordModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -75,7 +43,6 @@
                     <label for="InputBP1"><strong>Blood Pressure 1</strong></label>
                     <input class="form-control" id="bp1" type="text"  placeholder="Enter Blood Pressure 1">
                     <span style="color: red;" id="bp1_error"></span>
->>>>>>> d1817f3f167667f07b56bea0a80516a331e59108
                   </div>
                   <div class="col-md-6" style="margin-top: 10px;">
                     <label for="InputBP2"><strong>Blood Pressure 2</strong></label>

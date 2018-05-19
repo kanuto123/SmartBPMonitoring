@@ -18,7 +18,7 @@ if (isset($_POST)){
 	$startDate = $_POST['startDate']." 00:00:00";
 
 	if (!isset($patient) || $patient === "") {
-		$json['errors']['patient'] = 'Event name is required.';
+		$json['errors']['patient'] = 'Patient is required.';
 	}
 	if (!isset($bp1) || $bp1 === "") {
 		$json['errors']['bp1'] = 'Blood Pressure 1 is required.';
