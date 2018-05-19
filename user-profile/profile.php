@@ -6,7 +6,6 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      <!-- Example DataTables Card-->
     <?php include("../pages/my-user-profile.php"); ?>
     </div>
     <!-- /.container-fluid-->
