@@ -34,13 +34,13 @@
                         <span style="color: red;" id="fname_error"></span>
                       </div>
                       <div class="col-md-6">
-                        <label for="InputLname"><strong>Blood Pressure 1</strong></label>
-                        <input class="form-control" id="bp1" type="text"  placeholder="Enter Blood Pressure 1">
+                        <label for="InputLname"><strong>Systolic</strong></label>
+                        <input class="form-control" id="bp1" type="text"  placeholder="Enter Systolic">
                         <span style="color: red;" id="lname_error"></span>
                       </div>
                       <div class="col-md-6">
-                        <label for="InputMi"><strong>Blood Pressure 2</strong></label>
-                        <input class="form-control" id="bp2" type="text"  placeholder="Enter Blood Pressure 2">
+                        <label for="InputMi"><strong>Diastolic</strong></label>
+                        <input class="form-control" id="bp2" type="text"  placeholder="Enter Diastolic">
                         <span style="color: red;" id="mi_error"></span>                      
                       </div>                      
                     </div>
