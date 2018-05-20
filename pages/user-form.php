@@ -46,8 +46,8 @@
             <div class="col-md-6">
                 <label for="InputGender"><strong>Gender</strong></label>
                 <br>
-                <input type="radio" name="gender" value="male"> Male
-                <input type="radio" name="gender" value="female"> Female
+                <input type="radio" name="gender" value="Male"> Male
+                <input type="radio" name="gender" value="Female"> Female
                 <br>
             <span style="color: red;" id="gender_error"></span>
             </div>

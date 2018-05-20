@@ -9,6 +9,7 @@
         <i class="fa fa-calendar"></i> Records
       </div>
       <br>
+<<<<<<< HEAD
         <div class="col-sm-11">
           <!-- <button type="button" class="btn btn-primary btn-sm" onclick="addEvent()">ADD EVENT</button> -->
           <?php if (!$_SESSION['user']['patient_id']) { ?>
@@ -54,6 +55,65 @@
         </div>
     </div>
     <?php } ?>
+=======
+      <?php if (!$_SESSION['user']['patient_id']) { ?>
+        <div class="col-sm-11">
+          <button class="btn btn-info btn-sg" data-toggle="modal" data-target="#addRecordModal">ADD EVENT</button>
+        </div>
+      <?php } ?>
+      <div class="modal fade" id="addRecordModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-success dynamic-alert" role="alert" style="display: none;"><center class="error-messages">test</center></div>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <label for="InputPatient"><strong>Patient</strong></label>
+                    <br>
+                    <select class="form-control select2" id="patient" style="width: 460px;" placeholder="Search Patient"></select>
+                    <span style="color: red;" id="patient_error"></span>
+                  </div>
+                  <div class="clear"></div>
+                  <!-- <div class="col-md-12" style="margin-top: 10px;">
+                    <label for="InputEvent"><strong>Event Name</strong></label>
+                    <input class="form-control" id="eventName" type="text"  placeholder="Enter event name">
+                    <span style="color: red;" id="eventName_error"></span>
+                  </div> -->
+                  <div class="col-md-6" style="margin-top: 10px;">
+                    <label for="InputBP1"><strong>Blood Pressure 1</strong></label>
+                    <input class="form-control" id="bp1" type="text"  placeholder="Enter Blood Pressure 1">
+                    <span style="color: red;" id="bp1_error"></span>
+                  </div>
+                  <div class="col-md-6" style="margin-top: 10px;">
+                    <label for="InputBP2"><strong>Blood Pressure 2</strong></label>
+                    <input class="form-control" id="bp2" type="text"  placeholder="Enter Blood Pressure 2">
+                    <span style="color: red;" id="bp2_error"></span>
+                  </div>
+                  <div class="col-md-12">
+                    <label for="InputDate"><strong>Date</strong></label>
+                    <br>
+                    <input class="form-control" id="start_date" type="text"  placeholder="Enter Date" readonly>
+                    <span style="color: red;" id="date_error"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" onclick="createRecord()">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+>>>>>>> 47fba6114cdf5d2ffaa50cb2bdc373d152e9305a
       <center style="padding-right: 30px;">
         <div class="btn-group btn-group-toggle">
           <label class="btn btn-info btn-toggle active" id="calendar-view-btn">
@@ -79,8 +139,12 @@
     <!-- Bootstrap core JavaScript-->
     <?php include("../templates/javascript.php"); ?>
     <link rel="stylesheet" href="<?php echo getBaseUrl() ?>/vendor/fullcalendar/fullcalendar.css" />
+    <link rel="stylesheet" href="<?php echo getBaseUrl() ?>/vendor/select2/dist/css/select2.css" />
+    <link rel="stylesheet" href="<?php echo getBaseUrl() ?>/vendor/datepicker/dist/datepicker.css" />
     <script src="<?php echo getBaseUrl() ?>/assets/js/moment.js"></script>
     <script src="<?php echo getBaseUrl() ?>/vendor/fullcalendar/fullcalendar.js"></script>
+    <script src="<?php echo getBaseUrl() ?>/vendor/select2/dist/js/select2.js"></script>
+    <script src="<?php echo getBaseUrl() ?>/vendor/datepicker/dist/datepicker.js"></script>
     <script type="text/javascript">
         function createEvent () {
           let url = "<?php echo getBaseUrl() ?>/api/addEvent.php";
@@ -129,6 +193,18 @@
       }
       $(function () {
         initializeCalendar();
+        var urlSelectPatient = "<?php echo getBaseUrl() ?>/api/getAllPatient.php";
+        $('.select2').select2({
+          ajax: {
+            url: urlSelectPatient,
+            dataType: 'json'
+          }
+        });
+
+        $("#start_date").datepicker({
+          format: 'yyyy-mm-dd',
+          autoPick: true
+        });
         $("#list-view-btn").on('click', function (){
           $(".btn-toggle").removeClass('active');
           $(this).addClass('active');
@@ -176,7 +252,9 @@
         if (parseInt(patientId)) {
           $("#calendarRecords").fullCalendar({
             header: {
-              center: views // buttons for switching between views
+              left: 'prev,next today',
+              center: 'title',
+              right: views
             },
             views: buttons,
             defaultView: defaultViewCalendar,
@@ -187,6 +265,9 @@
                   patientId: patientId
                 };
               }
+            },
+            eventClick: function(calEvent, jsEvent, view) {
+              alert('Record: ' + calEvent.title);
             }
           })
         } else {
@@ -198,12 +279,73 @@
             defaultView: defaultViewCalendar,
             events: {
               url: url
+            },
+            eventClick: function(calEvent, jsEvent, view) {
+              alert('Record: ' + calEvent.title);
             }
           })
         }
+      }
 
+      function createRecord () {
+        let url = "<?php echo getBaseUrl() ?>/api/addEvent.php";
+        let params = {
+          patient: $("#patient").val(),
+          bp1: $("#bp1").val(),
+          bp2: $("#bp2").val(),
+          startDate: $("#start_date").val()
+        }
+        $(".error-messages").html("");
+        $(".dynamic-alert").hide();
+        $.post(url, params, function (o) {
+          if(o.is_successful) {
+            clearFields();
+            $(".dynamic-alert").show();
+            $(".dynamic-alert").removeClass('alert-success');
+            $(".dynamic-alert").removeClass('alert-danger');
+            $(".dynamic-alert").addClass('alert-success');
+            $(".error-messages").html(o.messages);
+            setTimeout(()=> {
+              $("#addRecordModal").modal('hide');
+              $(".error-messages").html("");
+              $(".dynamic-alert").hide();
+              $('#calendarRecords').fullCalendar('removeEvents');
+              $('#calendarRecords').fullCalendar('refetchEvents');
+            }, 1000);
+          } else {
+            $(".dynamic-alert").removeClass('alert-success');
+            $(".dynamic-alert").removeClass('alert-danger');
+            $(".dynamic-alert").addClass('alert-danger');
+            if (o.error) {
+              $(".error-messages").html(o.error)
+            } else {
+              // clear messages
+              let fields = ['patient', 'bp1', 'bp2', 'date'];
+              $.each(fields, function( index, value ) {
+                $("#"+value+"_error").html("");
+              });
+              // set messages
+              $.each(o.errors, function( index, value ) {
+                $("#"+index+"_error").html(value);
+              });
+            }
+          }
+        }, 'json');
+      }
+
+      function clearFields () {
+        $("#bp1").val("");
+        $("#bp2").val("");
+
+        let fields = ['patient', 'bp1', 'bp2', 'date'];
+        $.each(fields, function( index, value ) {
+          $("#"+value+"_error").html("");
+        });
       }
     </script>
+    <style>
+      .datepicker-container{z-index:1151 !important;}
+    </style>
   </div>
 </body>
 
