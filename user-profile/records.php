@@ -4,121 +4,29 @@
  <?php include("../templates/navbar.php"); ?>
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <div class="card-header">
-        <i class="fa fa-calendar"></i> Records
+    <!-- Breadcrumbs-->
+    <div class="card-header">
+      <i class="fa fa-calendar"></i> Records
+    </div>
+    <br>
+    <?php if (!$_SESSION['user']['patient_id']) { ?>
+    <div class="col-sm-11">
+      <button class="btn btn-info btn-sg" data-toggle="modal" data-target="#addRecordModal">ADD EVENT</button>
+    </div>
+    <?php } ?>
+    </div>
+    <center style="padding-right: 30px;">
+      <div class="btn-group btn-group-toggle">
+        <label class="btn btn-info btn-toggle active" id="calendar-view-btn">
+          <input type="radio" name="options" checked> Calendar
+        </label>
+        <label class="btn btn-info btn-toggle" id="list-view-btn">
+          <input type="radio" name="options"> List
+        </label>
       </div>
-      <br>
-          <?php if (!$_SESSION['user']['patient_id']) { ?>
-        <div class="col-sm-11">
-          <!-- <button type="button" class="btn btn-primary btn-sm" onclick="addEvent()">ADD EVENT</button> -->
-          <?php if (!$_SESSION['user']['patient_id']) { ?>
-          <button class="btn btn-info btn-sg" data-toggle="modal" data-target="#addRecordModal">ADD EVENT</button>
-        </div>
-      </ol>
-        <div class="modal fade" id="addRecordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <div class="form-row">
-                      <div class="col-md-12">
-                        <label for="InputFname"><strong>Event Name</strong></label>
-                        <input class="form-control" id="eventName" type="text"  placeholder="Enter event name">
-                        <span style="color: red;" id="fname_error"></span>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="InputLname"><strong>Blood Pressure 1</strong></label>
-                        <input class="form-control" id="bp1" type="text"  placeholder="Enter Blood Pressure 1">
-                        <span style="color: red;" id="lname_error"></span>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="InputMi"><strong>Blood Pressure 2</strong></label>
-                        <input class="form-control" id="bp2" type="text"  placeholder="Enter Blood Pressure 2">
-                        <span style="color: red;" id="mi_error"></span>                      
-                      </div>                      
-                    </div>
-                  </div>
-                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-primary" name="addEvent" onclick="createEvent()">Create</a>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-    <?php } ?>
-    <?php } ?>
-      <?php if (!$_SESSION['user']['patient_id']) { ?>
-        <div class="col-sm-11">
-          <button class="btn btn-info btn-sg" data-toggle="modal" data-target="#addRecordModal">ADD EVENT</button>
-        </div>
-        <div class="modal fade" id="addRecordModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">
-              <div class="alert alert-success dynamic-alert" role="alert" style="display: none;"><center class="error-messages">test</center></div>
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col-md-12">
-                    <label for="InputPatient"><strong>Patient</strong></label>
-                    <br>
-                    <select class="form-control select2" id="patient" style="width: 460px;" placeholder="Search Patient"></select>
-                    <span style="color: red;" id="patient_error"></span>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="col-md-6" style="margin-top: 10px;">
-                    <label for="InputBP1"><strong>Blood Pressure 1</strong></label>
-                    <input class="form-control" id="bp1" type="text"  placeholder="Enter Blood Pressure 1">
-                    <span style="color: red;" id="bp1_error"></span>
-                  </div>
-                  <div class="col-md-6" style="margin-top: 10px;">
-                    <label for="InputBP2"><strong>Blood Pressure 2</strong></label>
-                    <input class="form-control" id="bp2" type="text"  placeholder="Enter Blood Pressure 2">
-                    <span style="color: red;" id="bp2_error"></span>
-                  </div>
-                  <div class="col-md-12">
-                    <label for="InputDate"><strong>Date</strong></label>
-                    <br>
-                    <input class="form-control" id="start_date" type="text"  placeholder="Enter Date" readonly>
-                    <span style="color: red;" id="date_error"></span>
-                  </div>
-                </div>
-              </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" onclick="createRecord()">Create</button>
-            </div>
-            </div>
-          </div>
-        </div>
-    </div>
-      <center style="padding-right: 30px;">
-        <div class="btn-group btn-group-toggle">
-          <label class="btn btn-info btn-toggle active" id="calendar-view-btn">
-            <input type="radio" name="options" checked> Calendar
-          </label>
-          <label class="btn btn-info btn-toggle" id="list-view-btn">
-            <input type="radio" name="options"> List
-          </label>
-           <?php } ?>
-        </div>
-      </center>
-      <br>
-      <div id="calendarRecords"></div>
+    </center>
+    <br>
+    <div id="calendarRecords"></div>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -127,6 +35,53 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+
+    <div class="modal fade" id="addRecordModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-success dynamic-alert" role="alert" style="display: none;"><center class="error-messages">test</center></div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-12">
+                  <label for="InputPatient"><strong>Patient</strong></label>
+                  <br>
+                  <select class="form-control select2" id="patient" style="width: 460px;" placeholder="Search Patient"></select>
+                  <span style="color: red;" id="patient_error"></span>
+                </div>
+                <div class="clear"></div>
+                <div class="col-md-6" style="margin-top: 10px;">
+                  <label for="InputBP1"><strong>Blood Pressure 1</strong></label>
+                  <input class="form-control" id="bp1" type="text"  placeholder="Enter Blood Pressure 1">
+                  <span style="color: red;" id="bp1_error"></span>
+                </div>
+                <div class="col-md-6" style="margin-top: 10px;">
+                  <label for="InputBP2"><strong>Blood Pressure 2</strong></label>
+                  <input class="form-control" id="bp2" type="text"  placeholder="Enter Blood Pressure 2">
+                  <span style="color: red;" id="bp2_error"></span>
+                </div>
+                <div class="col-md-12">
+                  <label for="InputDate"><strong>Date</strong></label>
+                  <br>
+                  <input class="form-control" id="start_date" type="text"  placeholder="Enter Date" readonly>
+                  <span style="color: red;" id="date_error"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" onclick="createRecord()">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Logout Modal-->
     <?php include("../templates/logout-modal.php"); ?>
     <!-- Bootstrap core JavaScript-->
@@ -154,7 +109,7 @@
               $(".dynamic-alert").addClass('alert-success');
               $(".error-messages").html(o.messages);
             } else {
-              $(".dynamic-alert").removeClass('alert-success'); 
+              $(".dynamic-alert").removeClass('alert-success');
               $(".dynamic-alert").removeClass('alert-danger');
               $(".dynamic-alert").addClass('alert-danger');
               // clear messages
