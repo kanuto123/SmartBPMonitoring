@@ -56,21 +56,42 @@ if (isset($_POST)){
     $sendSms = false;
     $dateTaken = date("M d, Y h:i a", strtotime($startDate));
     $message = "Hi {$eventName}, \n";
-    $message .= "Please be Informed!\n";
     $message .= "the result of your BP test is {$bp1}/{$bp2}\n";
     $message .= "taken last {$dateTaken}.\n";
-    if ($bp1 >= 121 && $bp1 <= 139) {
-      $message .= "You have PREHYPERTENSION. Take a rest.";
-      $sendSms = true;
-    }
+    // if ($bp1 >= 121 && $bp1 <= 139) {
+    //   $message .= "You have PREHYPERTENSION. Take a rest.";
+    //   $sendSms = true;
+    // }
+    //
+    // if ($bp1 >= 140 && $bp1 <= 159) {
+    //   $message .= "You have STAGE 1 HYPERTENSION. Please take a medicine.";
+    //   $sendSms = true;
+    // }
+    //
+    // if ($bp1 >= 160) {
+    //   $message .= "You have STAGE 2 HYPERTENSION. Please see a doctor immediately!";
+    //   $sendSms = true;
+    // }
 
-    if ($bp1 >= 140 && $bp1 <= 159) {
-      $message .= "You have STAGE 1 HYPERTENSION. Please take a medicine.";
-      $sendSms = true;
-    }
-
-    if ($bp1 >= 160) {
-      $message .= "You have STAGE 2 HYPERTENSION. Please see a doctor immediately!";
+    if ($bp1 >= 140) {
+      $message .= "Your blood pressure is quite high. \n\n
+                  Here are the list of things to do.\n
+                  1. Take Medications if prescribe by your doctor.\n
+                  2. Move to a cool place to avoid the risk of having stroke.\n
+                  3. Take deep breaths and relax your mind and body to lower your blood pressure.\n
+                  4. Drink fruit juice with potassium\n
+                  5. Move away from stressful situations\n\n
+                  Here are the list on how to prevent hypertension\n
+                  1. Avoid too much sodium and fatty foods.\n
+                  2 .Exercise regularly.\n
+                  3. Stop smoking and drinking alcoholic beverages.\n
+                  4. Avoid too much stress and be comfortable with your surroundings\n
+                  5. Monitor your blood pressure regularly and appoint check-ups with your doctor.\n\n
+                  In case of emergency go to the nearest Hospital or kindly Contact the following.\n
+                  Daniel O. Mercado Medical Center.\n
+                  (043) 778 1810\n
+                  C.P. Reyes Hospital\n
+                  (043) 784 5401";
       $sendSms = true;
     }
 
