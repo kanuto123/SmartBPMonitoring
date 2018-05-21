@@ -77,7 +77,7 @@
           </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" onclick="createRecord()">Create</button>
+            <button type="button" class="btn btn-primary btn-create" onclick="createRecord()">Create</button>
           </div>
         </div>
       </div>
@@ -94,38 +94,6 @@
     <script src="<?php echo getBaseUrl() ?>/vendor/select2/dist/js/select2.js"></script>
     <script src="<?php echo getBaseUrl() ?>/vendor/datepicker/dist/datepicker.js"></script>
     <script type="text/javascript">
-        function createEvent () {
-          let url = "<?php echo getBaseUrl() ?>/api/addEvent.php";
-          let params = {
-            eventName: $("#eventName").val(),
-            bp1: $("#bp1").val(),
-            bp2: $("#bp2").val()
-          }
-
-          $.post(url, params, function (o) {
-            if(o.is_successful) {
-              $(".dynamic-alert").show();
-              clearFields();
-              $(".dynamic-alert").addClass('alert-success');
-              $(".error-messages").html(o.messages);
-            } else {
-              $(".dynamic-alert").removeClass('alert-success');
-              $(".dynamic-alert").removeClass('alert-danger');
-              $(".dynamic-alert").addClass('alert-danger');
-              // clear messages
-              let fields = ['eventName', 'bp1', 'bp2'];
-              $.each(fields, function( index, value ) {
-                $("#"+value+"_error").html("");
-              });
-              // set messages
-              $.each(o.errors, function( index, value ) {
-                $("#"+index+"_error").html(value);
-              });
-              $(".dynamic-alert").hide();
-            }
-          }, 'json');
-        }
-
       var views = 'basicDay,basicWeek,month';
       var defaultViewCalendar = 'month';
       var buttons = {
@@ -251,6 +219,7 @@
         }
         $(".error-messages").html("");
         $(".dynamic-alert").hide();
+        $(".btn-create").attr('disabled', 'disabled');
         $.post(url, params, function (o) {
           if(o.is_successful) {
             clearFields();
@@ -266,6 +235,7 @@
               $(".dynamic-alert").hide();
               $('#calendarRecords').fullCalendar('removeEvents');
               $('#calendarRecords').fullCalendar('refetchEvents');
+              $(".btn-create").removeAttr('disabled');
             }, 1000);
           } else {
             $(".dynamic-alert").removeClass('alert-success');
@@ -285,6 +255,7 @@
                 $("#"+index+"_error").html(value);
               });
             }
+            $(".btn-create").removeAttr('disabled');
           }
         }, 'json');
       }
