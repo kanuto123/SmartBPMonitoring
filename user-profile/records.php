@@ -9,10 +9,7 @@
         <i class="fa fa-calendar"></i> Records
       </div>
       <br>
-<<<<<<< HEAD
           <?php if (!$_SESSION['user']['patient_id']) { ?>
-=======
-<<<<<<< HEAD
         <div class="col-sm-11">
           <!-- <button type="button" class="btn btn-primary btn-sm" onclick="addEvent()">ADD EVENT</button> -->
           <?php if (!$_SESSION['user']['patient_id']) { ?>
@@ -58,9 +55,8 @@
         </div>
     </div>
     <?php } ?>
-=======
+    <?php } ?>
       <?php if (!$_SESSION['user']['patient_id']) { ?>
->>>>>>> ec055ef779924ad7d8c7e8bb69c608f932dc4aba
         <div class="col-sm-11">
           <button class="btn btn-info btn-sg" data-toggle="modal" data-target="#addRecordModal">ADD EVENT</button>
         </div>
@@ -110,11 +106,6 @@
           </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <?php } ?>
-=======
->>>>>>> 47fba6114cdf5d2ffaa50cb2bdc373d152e9305a
->>>>>>> ec055ef779924ad7d8c7e8bb69c608f932dc4aba
       <center style="padding-right: 30px;">
         <div class="btn-group btn-group-toggle">
           <label class="btn btn-info btn-toggle active" id="calendar-view-btn">
@@ -123,6 +114,7 @@
           <label class="btn btn-info btn-toggle" id="list-view-btn">
             <input type="radio" name="options"> List
           </label>
+           <?php } ?>
         </div>
       </center>
       <br>
