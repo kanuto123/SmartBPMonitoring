@@ -18,10 +18,9 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">Number of Tests</div>
-              <div class="mr-5">Daily</div>
+              <div class="mr-5"><span id="daily-test">0</span> Daily Test</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/records/daily-table.php">
+            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/user-profile/records.php?type=DAILY">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -35,10 +34,9 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">Number of Tests</div>
-              <div class="mr-5">Weekly</div>
+              <div class="mr-5"><span id="weekly-test">0</span> Weekly Test</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/records/weekly-table.php">
+            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/user-profile/records.php?type=WEEKLY">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -52,10 +50,9 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">Number of Tests</div>
-              <div class="mr-5">Monthly</div>
+              <div class="mr-5"><span id="monthly-test">0</span> Monthly Test</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/records/monthly-table.php">
+            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/user-profile/records.php?type=MONTHLY">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -69,10 +66,9 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">Number of Tests</div>
-              <div class="mr-5">Yearly</div>
+              <div class="mr-5"><span id="yearly-test">0</span> Yearly Test</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/records/yearly-table.php">
+            <a class="card-footer text-white clearfix small z-1" href="<?php echo getBaseUrl() ?>/user-profile/records.php?type=YEARLY">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -88,7 +84,32 @@
       <i class="fa fa-angle-up"></i>
     </a>
     <?php include("templates/logout-modal.php"); ?>
-   <?php include("templates/javascript.php"); ?>
+    <?php include("templates/javascript.php"); ?>
+    <script type="text/javascript">
+      $(function(){
+        loadCounterRecords();
+      })
+
+      function loadCounterRecords () {
+        var url = "<?php echo getBaseUrl() ?>/api/getCountTest.php";
+        $.get(url, {type: "DAILY"}, function (o) {
+          $("#daily-test").html(o.count);
+        }, 'json');
+        $.get(url, {type: "WEEKLY"}, function (o) {
+          $("#weekly-test").html(o.count);
+        }, 'json');
+        $.get(url, {type: "MONTHLY"}, function (o) {
+          $("#monthly-test").html(o.count);
+        }, 'json');
+        $.get(url, {type: "YEARLY"}, function (o) {
+          $("#yearly-test").html(o.count);
+        }, 'json');
+
+        setTimeout(() => {
+          loadCounterRecords()
+        }, 1000)
+      }
+    </script>
   </div>
 </body>
 </html>

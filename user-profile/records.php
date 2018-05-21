@@ -197,6 +197,7 @@
       function initializeCalendar () {
         var url = "<?php echo getBaseUrl() ?>/api/retrieveCalendarData.php";
         var patientId = "<?php echo $_SESSION['user']['patient_id'] ?>";
+        var type = "<?php echo (isset($_GET['type']) ? ucwords($_GET['type']) : 'default' ) ?>";
         if (parseInt(patientId)) {
           $("#calendarRecords").fullCalendar({
             header: {
@@ -215,7 +216,7 @@
               }
             },
             eventClick: function(calEvent, jsEvent, view) {
-              alert('Record: ' + calEvent.title);
+              alertify.alert("Record", "Patient: " + calEvent.patientName + "<br>BP: " + calEvent.BP + "<br>Time Taken: " + calEvent.timeTaken);
             }
           })
         } else {
@@ -226,10 +227,15 @@
             views: buttons,
             defaultView: defaultViewCalendar,
             events: {
-              url: url
+              url: url,
+              data: function() { // a function that returns an object
+                return {
+                  type: type
+                };
+              }
             },
             eventClick: function(calEvent, jsEvent, view) {
-              alert('Record: ' + calEvent.title);
+              alertify.alert("Record", "Patient: " + calEvent.patientName + "<br>BP: " + calEvent.BP + "<br>Time Taken: " + calEvent.timeTaken);
             }
           })
         }
@@ -253,6 +259,7 @@
             $(".dynamic-alert").removeClass('alert-danger');
             $(".dynamic-alert").addClass('alert-success');
             $(".error-messages").html(o.messages);
+            alertify.success(o.messages);
             setTimeout(()=> {
               $("#addRecordModal").modal('hide');
               $(".error-messages").html("");
@@ -265,7 +272,8 @@
             $(".dynamic-alert").removeClass('alert-danger');
             $(".dynamic-alert").addClass('alert-danger');
             if (o.error) {
-              $(".error-messages").html(o.error)
+              $(".error-messages").html(o.error);
+              alertify.error(o.error);
             } else {
               // clear messages
               let fields = ['patient', 'bp1', 'bp2', 'date'];
