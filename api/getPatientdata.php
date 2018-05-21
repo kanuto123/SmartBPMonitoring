@@ -40,14 +40,9 @@ mysqli_close($con);
     </div>
   </div>
 </div>
-<!-- <script src="<?php echo getBaseUrl() ?>/vendor/jquery/jquery.min.js"></script> -->
 <script type="text/javascript">
   function deletePatientDB (id) {
     let url = "<?php echo getBaseUrl() ?>/api/deletePatient.php";
-   /* let params = {
-      fname: $("#fname").val(),
-      lname: $("#")
-    }*/
     $.post(url, {id: id}, function (o) {
       $(".dynamic-alert").show();
       if(o.is_successful) {

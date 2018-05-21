@@ -14,7 +14,6 @@ if (mysqli_connect_errno()) {
 			 $query = "SELECT * FROM users WHERE id=$id && patient_id=$patient_id";
 		$ret = mysqli_query($con, $query);
 
-		//$_SESSION['msg'] = "Address updated";
 		header("Location: ". getBaseUrl() . "/manage-user/update.php?edit=$id&&editPid=$patient_id");
 		die();
 	}
@@ -67,12 +66,6 @@ if (isset($_POST)){
 	$gender = $_POST['gender'];
 	$contactNo = $_POST['contactNo'];
 	
-
-	/*if (!$_POST['fname'] || !$_POST['lname']) {
-		$_SESSION['errors'] = "Username and Password is required!";
-		header("Location: ". getBaseUrl() . "/manage-patients/add.php");
-  		die();
-	}*/
 	if (!isset($fname) || $fname === "") {
 		$_SESSION['errors']['fname'] = 'First name is required.';
 	}
@@ -97,13 +90,6 @@ if (isset($_POST)){
 	if (!isset($gender) || $gender === "") {
 		$_SESSION['errors']['gender'] = 'Gender is required.'; 
 	}
-// $post = $_POST;
-// if (!$post['fname'] || !$post['lname'] || !$post['address'] || !$post['bday'] || !$post['mi'] || !$post['email'] 	
-// 	|| !$post['gender'] || !$post['contactno']) {
-//   $_SESSION['errors'] = "Enter Required Fields!";
-//   header("Location: ". getBaseUrl() . "/manage-patients/add.php");
-//   die();
-// }
 // search length of array
 	if (isset($_SESSION['errors']) || count($_SESSION['errors']) > 0) {	
 		print_r($_SESSION['errors']);
@@ -116,30 +102,6 @@ if (isset($_POST)){
 	header("Location: ". getBaseUrl() . "/manage-user/add.php");
 	die(); 	//redirect to index page after inserting
 	}
-//update
-//	if (isset($_POST['update'])) {
-//		 $Fname  = mysqli_real_escape_string($_POST['Fname']);
-//		 $Lname = mysqli_real_escape_string($_POST['Lname']);
-//		 $address = mysqli_real_escape_string($_POST['address']);
-//		 $Bday = mysqli_real_escape_string($_POST['Bday']);
-//		 $id = mysqli_real_escape_string($_POST['id']);
-//
-//		mysqli_query($db, "UPDATE info SET Fname='$Fname',Lname='$Lname',address='$address',Bday='$Bday' WHERE id=$id");
-//		$_SESSION['msg'] = "Address updated";
-//		header('location: index.php');
-//	}
-//delete
-	/*if (isset($_GET['del'])){
-		$id = $_GET['del'];
-               $query = "DELETE FROM user WHERE id='$id'";
-		mysqli_query($con, $query);
-		if (mysqli_query($con, $query)) {
-			echo "Record deleted successfully";
-			} else {
-			echo "Error deleting record: " . mysqli_error($con);
-			}
-		$_SESSION['msg'] = "USER DELETED";
-		/*header("Location: ". getBaseUrl() . "/manage-user/index.php");*/
 	
 ////retrieve records
 	$results = mysqli_query($con,"SELECT * FROM users");

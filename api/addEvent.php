@@ -10,8 +10,6 @@ if (mysqli_connect_errno()) {
 }
 
 if (isset($_POST)){
-	// print_r($_POST);
-	// die();
 	$patient = $_POST['patient'];
 	$bp1 = $_POST['bp1'];
 	$bp2 = $_POST['bp2'];

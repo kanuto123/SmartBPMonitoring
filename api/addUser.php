@@ -61,10 +61,7 @@ if (isset($_POST)){
 	}
 
 // Perform queries
-
-
 	$password = md5($password);
-
 	$queryUser = "INSERT INTO users (patient_id,email,fname,lname,mi,password,address,contactNo,gender,birthday) VALUES (0 , '$email', '$fname', '$lname', '$mi', '$password', '$address', '$contactNo', '$gender', '$birthday')";
 	mysqli_query($con, $queryUser);
 

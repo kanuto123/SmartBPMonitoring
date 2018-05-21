@@ -8,9 +8,7 @@
         <div class="errormsg">
           <?php
             echo $_SESSION['errormsg'];
-            $email = $_SESSION['email'];
             unset($_SESSION['errormsg']);
-            $_SESSION['email'] = $email;
           ?>
         </div>
       <?php endif ?><br>
@@ -43,4 +41,3 @@
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
-<!-- SCRIPTS -->

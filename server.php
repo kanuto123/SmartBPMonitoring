@@ -1,5 +1,4 @@
 <?php
-
 	$fname = "";
 	$lname = "";
 	$email = "";
@@ -35,7 +34,5 @@
 					VAlUES ('$fname', '$lname', '$email', '$pwd')";
 			mysqli_query($db, $sql);
 		}
-
 	}
-
  ?>

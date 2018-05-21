@@ -10,8 +10,6 @@ if (mysqli_connect_errno()) {
 }
 
 if (isset($_POST)){
-	// print_r($_POST);
-	// die();
 	$fname = $_POST['fname'];
 	$lname = $_POST['lname'];
 	$address = $_POST['address'];
@@ -20,7 +18,6 @@ if (isset($_POST)){
 	$email = $_POST['email'];
 	$gender = isset($_POST['gender']) ? $_POST['gender'] : "";
 	$contactNo = $_POST['contactNo'];
-
 
 	$array = ['test', 'test'];
 	if (!isset($fname) || $fname === "") {

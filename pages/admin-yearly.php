@@ -12,21 +12,25 @@
       <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
         <thead>
           <th><center>Name</center></th>
-          <th><center>Address</center></th>
           <th><center>Contact Number</center></th>
           <th><center>Email Address</center></th>
-          <th><center>Gender</th>
+          <th><center>Blood Pressure</th>
           <th><center>Action</center></th>
         </thead>
         <tbody>
-          <?php $yearly = getAdminYearlyRecord() ?>
-          <?php while ($row = mysqli_fetch_array($yearly)) { ?>
+          <?php $daily = getAdminDailyRecord() ?>
+          <?php while ($row = mysqli_fetch_array($daily)) { ?>
             <tr>
-              <td width="20%"><?php echo $row['fname']; ?> <?php echo $row['mi']; ?> <?php echo $row['lname']; ?></td>
-              <td width="30%"><?php echo $row['address']; ?></td>
-              <td width="12%"><?php echo $row['contactNo']; ?></td>
+              <td width="15%"><?php echo $row['fname']; ?> <?php echo $row['mi']; ?> <?php echo $row['lname']; ?></td>
+              <td width="10%"><?php echo $row['contactNo']; ?></td>
               <td width="15%"><?php echo $row['email']; ?></td>
-              <td width="3%"><?php echo $row['gender']; ?></td>
+              <!-- <?php
+                //$bp1=//$row['bp1'];
+                //$bp2=//$row['bp2'];
+                //$bp="$bp1/$bp2";
+              ?>
+              <td width="10%"><?php //echo $bp; ?></td> -->
+              <td width="10%"><?php echo $row['gender']; ?></td>
               <td width="10%">
                 <a class="del_btn btn btn-primary btn-sm" href="../manage-patients/server.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a>
                 <button type="button" class="btn btn-danger btn-sm" onclick="deletePatient(<?php echo $row['id'] ?>)"><i class="fa fa-trash"></i></button>
@@ -58,7 +62,6 @@
   })
   function deletePatient(idx) {
     let url = "<?php echo getBaseUrl() ?>/api/getPatientInfoDelete.php";
-    // $(".modal-message").html('<span class="fa fa-spinner fa-spin"></span> Loading patient info...');
     $.post(url, {id: idx}, function (result) {
       $("#deleteModalpatient").html(result);
       $("#deleteModalpatient").modal('show');

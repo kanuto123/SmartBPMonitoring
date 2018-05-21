@@ -28,5 +28,4 @@
     <?php include("../templates/javascript.php"); ?>
   </div>
 </body>
-
 </html>

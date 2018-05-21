@@ -9,21 +9,20 @@
         <i class="fa fa-calendar"></i> Records
       </div>
       <br>
-      <?php if (!$_SESSION['user']['patient_id']) { ?>
+          <?php if (!$_SESSION['user']['patient_id']) { ?>
         <div class="col-sm-11">
           <button class="btn btn-info btn-sg" data-toggle="modal" data-target="#addRecordModal">ADD EVENT</button>
         </div>
-      <?php } ?>
-      <div class="modal fade" id="addRecordModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
+        <div class="modal fade" id="addRecordModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
               <div class="alert alert-success dynamic-alert" role="alert" style="display: none;"><center class="error-messages">test</center></div>
               <div class="form-group">
                 <div class="form-row">
@@ -34,11 +33,6 @@
                     <span style="color: red;" id="patient_error"></span>
                   </div>
                   <div class="clear"></div>
-                  <!-- <div class="col-md-12" style="margin-top: 10px;">
-                    <label for="InputEvent"><strong>Event Name</strong></label>
-                    <input class="form-control" id="eventName" type="text"  placeholder="Enter event name">
-                    <span style="color: red;" id="eventName_error"></span>
-                  </div> -->
                   <div class="col-md-6" style="margin-top: 10px;">
                     <label for="InputBP1"><strong>Blood Pressure 1</strong></label>
                     <input class="form-control" id="bp1" type="text"  placeholder="Enter Blood Pressure 1">
@@ -57,15 +51,15 @@
                   </div>
                 </div>
               </div>
-            </div>
             <div class="modal-footer">
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
               <button type="button" class="btn btn-primary" onclick="createRecord()">Create</button>
             </div>
+            </div>
           </div>
         </div>
-      </div>
     </div>
+    <?php } ?>
       <center style="padding-right: 30px;">
         <div class="btn-group btn-group-toggle">
           <label class="btn btn-info btn-toggle active" id="calendar-view-btn">
@@ -268,5 +262,4 @@
     </style>
   </div>
 </body>
-
 </html>

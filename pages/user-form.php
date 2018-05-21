@@ -124,7 +124,5 @@
     $("input[type='radio'][name='gender']:checked").prop('checked',false);
     $("#password").val("");
     $("#password2").val("");
-
   }
 </script>
-

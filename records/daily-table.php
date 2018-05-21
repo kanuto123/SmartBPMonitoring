@@ -33,6 +33,4 @@
     <?php include("../templates/logout-modal.php"); ?>
   </div>
 </body>
-
 </html>
- 

@@ -6,7 +6,6 @@
   }
 ?>
 <body class="bg-secondary">
- <!-- <div class="card-header"><center><b>Smart BP Monitoring</b></center></div> -->
   <div class="container">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header"><center><b>Smart BP Monitoring</b></center></div>
@@ -41,11 +40,8 @@
       </div>
     </div>
   </div>
-  <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
-
 </html>

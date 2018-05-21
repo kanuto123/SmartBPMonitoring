@@ -19,9 +19,9 @@ $email = $post['email'];
 $password = $post['password'];
 // Perform queries
 $query = "SELECT * FROM users WHERE email='$email'";
-
 $res = mysqli_query($con,$query);
 $user = mysqli_fetch_assoc($res);
+
 if ($user) {
   if ($user['password'] == md5($password)) {
     $_SESSION['user'] = $user;
@@ -39,8 +39,6 @@ if ($user) {
   header("Location: ". getBaseUrl() . "/login.php");
   die();
 }
-// mysqli_query($con,"INSERT INTO Persons (FirstName,LastName,Age)
-// VALUES ('Glenn','Quagmire',33)");
 
 mysqli_close($con);
 ?>

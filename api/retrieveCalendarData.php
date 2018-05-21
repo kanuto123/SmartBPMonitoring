@@ -28,6 +28,5 @@
       "allDay" => $result['allDay'] ? true : false
     ];
   }
-
   echo json_encode($events, 200);
 ?>
