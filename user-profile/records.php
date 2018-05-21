@@ -9,7 +9,58 @@
         <i class="fa fa-calendar"></i> Records
       </div>
       <br>
+<<<<<<< HEAD
           <?php if (!$_SESSION['user']['patient_id']) { ?>
+=======
+<<<<<<< HEAD
+        <div class="col-sm-11">
+          <!-- <button type="button" class="btn btn-primary btn-sm" onclick="addEvent()">ADD EVENT</button> -->
+          <?php if (!$_SESSION['user']['patient_id']) { ?>
+          <button class="btn btn-info btn-sg" data-toggle="modal" data-target="#addRecordModal">ADD EVENT</button>
+        </div>
+      </ol>
+        <div class="modal fade" id="addRecordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Event</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <div class="form-row">
+                      <div class="col-md-12">
+                        <label for="InputFname"><strong>Event Name</strong></label>
+                        <input class="form-control" id="eventName" type="text"  placeholder="Enter event name">
+                        <span style="color: red;" id="fname_error"></span>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="InputLname"><strong>Blood Pressure 1</strong></label>
+                        <input class="form-control" id="bp1" type="text"  placeholder="Enter Blood Pressure 1">
+                        <span style="color: red;" id="lname_error"></span>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="InputMi"><strong>Blood Pressure 2</strong></label>
+                        <input class="form-control" id="bp2" type="text"  placeholder="Enter Blood Pressure 2">
+                        <span style="color: red;" id="mi_error"></span>                      
+                      </div>                      
+                    </div>
+                  </div>
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" name="addEvent" onclick="createEvent()">Create</a>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <?php } ?>
+=======
+      <?php if (!$_SESSION['user']['patient_id']) { ?>
+>>>>>>> ec055ef779924ad7d8c7e8bb69c608f932dc4aba
         <div class="col-sm-11">
           <button class="btn btn-info btn-sg" data-toggle="modal" data-target="#addRecordModal">ADD EVENT</button>
         </div>
@@ -59,7 +110,11 @@
           </div>
         </div>
     </div>
+<<<<<<< HEAD
     <?php } ?>
+=======
+>>>>>>> 47fba6114cdf5d2ffaa50cb2bdc373d152e9305a
+>>>>>>> ec055ef779924ad7d8c7e8bb69c608f932dc4aba
       <center style="padding-right: 30px;">
         <div class="btn-group btn-group-toggle">
           <label class="btn btn-info btn-toggle active" id="calendar-view-btn">
@@ -92,6 +147,38 @@
     <script src="<?php echo getBaseUrl() ?>/vendor/select2/dist/js/select2.js"></script>
     <script src="<?php echo getBaseUrl() ?>/vendor/datepicker/dist/datepicker.js"></script>
     <script type="text/javascript">
+        function createEvent () {
+          let url = "<?php echo getBaseUrl() ?>/api/addEvent.php";
+          let params = {
+            eventName: $("#eventName").val(),
+            bp1: $("#bp1").val(),
+            bp2: $("#bp2").val()
+          }
+
+          $.post(url, params, function (o) {
+            if(o.is_successful) {
+              $(".dynamic-alert").show();
+              clearFields();
+              $(".dynamic-alert").addClass('alert-success');
+              $(".error-messages").html(o.messages);
+            } else {
+              $(".dynamic-alert").removeClass('alert-success'); 
+              $(".dynamic-alert").removeClass('alert-danger');
+              $(".dynamic-alert").addClass('alert-danger');
+              // clear messages
+              let fields = ['eventName', 'bp1', 'bp2'];
+              $.each(fields, function( index, value ) {
+                $("#"+value+"_error").html("");
+              });
+              // set messages
+              $.each(o.errors, function( index, value ) {
+                $("#"+index+"_error").html(value);
+              });
+              $(".dynamic-alert").hide();
+            }
+          }, 'json');
+        }
+
       var views = 'basicDay,basicWeek,month';
       var defaultViewCalendar = 'month';
       var buttons = {
